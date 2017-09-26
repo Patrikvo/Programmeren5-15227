@@ -69,18 +69,48 @@
 
                     <fieldset>
                             <legend>Persoonlijke gegevens</legend>
-
-                            GSM   tekst
-
-                            Geboortedatum     datum
-
-                            Hoe tevreden ben je?    scroller
-
-                            Man Vrouw  Onbekend    radiobuttons
-
-                            Afdeling   listbox
-
-                            Modules  listbox
+                            <div>
+                                <label for="gsm">GSM </label>
+                                <input type="text" name="gsm" id="gsm"  />
+                            </div>
+                            
+                            <div>
+                                <label for="birthday">Geboortedatum </label>
+                                <input type="date" name="birthday" id="birthday">
+                            </div>
+                            
+                            <div>
+                                <label for="satisfied">Hoe tevreden ben je?</label>
+                                <input type="range" min="0" max="10" step="1" value="5" name="satisfied" id="satisfied"/>
+                            </div>
+                            
+                            <div>
+                                <input type="radio" name="sex" value="male" id="male">
+                                <label for="male">Man</label>
+                                <input type="radio" name="sex" value="female" id="female">
+                                <label for="female">Vrouw</label>
+                                <input type="radio" name="sex" value="unknown" id="unknown">
+                                <label for="unknown">Onbekend</label>
+                            </div>
+                            
+                            <div>
+                                <label for="faculty">Afdeling</label>
+                                <select name="faculty" id="faculty">
+                                    <option value="HBO_INFO" selected>HBO Informatica</option>
+                                    <option value="HBO_BOEK">HBO Boekhouden</option>
+                                    <option value="TWEEDEKANS" >Tweede kansonderwijs</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="course">Modules</label>
+                                <select name="course" id="course">
+                                    <option value="A4">Multimedia</option>
+                                    <option value="A8">Databanken</option>
+                                    <option value="B1" selected>Programmeren 3</option>
+                                    <option value="B4">Programmeren 4</option>
+                                </select>
+                            </div>
 
                     </fieldset>
                     <div>

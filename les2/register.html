@@ -1,0 +1,93 @@
+<html lang="nl">
+    <head>
+    </head>
+    <body>
+            <form method="post" action="#">
+                    <fieldset>
+                            <legend>Accountgegevens</legend>
+                        <div>
+                            <label for="firstname">Voornaam <span>*</span></label>
+                            <input type="text" name="firstname" id="firstname" required="required" />
+                        </div>
+
+                        <div>
+                            <label for="lastname">Familienaam <span>*</span></label>
+                            <input type="text" name="lastname" id="lastname" required="required" />
+                        </div>
+                        
+                        <div>
+                            <label for="email">Email adres <span>*</span></label>
+                            <input type="email" name="email" id="email" required="required" placeholder="name@example.com">
+                        </div>
+                        
+                        <div>
+                            <label for="password1">Paswoord <span>*</span></label>
+                            <input type="password" name="password1" id="password1" required="required">
+                        </div>
+                        
+                        <div>
+                            <label for="password2">Bevestig paswoord <span>*</span></label>
+                            <input type="password" name="password2" id="password2" required="required">
+                        </div>
+                                    
+                    </fieldset>
+
+                    <fieldset>
+                            <legend>Adresgegevens</legend>
+
+                            <div>
+                                <label for="address1">Adres 1 <span>*</span></label>
+                                <input type="text" name="address1" id="address1" required="required" />
+                            </div>
+
+                            <div>
+                                <label for="address2">Adres 2 </label>
+                                <input type="text" name="address2" id="address2"  />
+                            </div>
+
+                            <div>
+                                <label for="city">Stad <span>*</span></label>
+                                <input type="text" name="city" id="city" required="required" />
+                            </div>
+                            
+                            <div>
+                                <label for="postalcode">Postcode <span>*</span></label>
+                                <input type="text" name="postalcode" id="postalcode" required="required" />
+                            </div>
+                            
+                            <div>
+                                <label for="countryCode">Land <span>*</span></label>
+                                <select name="countryCode" id="countryCode">
+                                    <option value="BE">België</option>
+                                    <option value="NL">Nederland</option>
+                                    <option value="GB" selected>Verenigd Koninkrijk</option>
+                                    <option value="FR">Frankrijk</option>
+                                </select>
+                            </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                            <legend>Persoonlijke gegevens</legend>
+
+                            GSM   tekst
+
+                            Geboortedatum     datum
+
+                            Hoe tevreden ben je?    scroller
+
+                            Man Vrouw  Onbekend    radiobuttons
+
+                            Afdeling   listbox
+
+                            Modules  listbox
+
+                    </fieldset>
+                    <div>
+                            <button type="submit" id="send" Name="action" value="send">
+                              Verzenden
+                            </button>
+                          </div>
+            </form>
+    </body>
+ </html>

@@ -24,3 +24,6 @@ call EventTopicInsert('Travel & Outdoor', @newId);
 
 call EventTopicUpdate("Replaced topic", 5);
 call EventTopicUpdate("2nd Replaced topic", 7);
+
+call EventTopicDelete(1);
+call EventTopicDelete(10);

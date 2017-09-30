@@ -41,3 +41,19 @@ UPDATE `EventTopic`
 	WHERE `EventTopic`.`Id` = pId;
 END //
 DELIMITER ;
+
+
+
+
+USE docent1;
+DROP PROCEDURE IF EXISTS EventTopicDelete;
+DELIMITER //
+CREATE PROCEDURE `EventTopicDelete`
+(
+	 pId INT 
+)
+BEGIN
+DELETE FROM `EventTopic`
+	WHERE `EventTopic`.`Id` = pId;
+END //
+DELIMITER ;

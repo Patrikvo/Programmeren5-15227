@@ -13,10 +13,14 @@ call EventTopicInsert('Hobbies & Special Interests', @newId);
 call EventTopicInsert('Home & Lifestyle', @newId);
 call EventTopicInsert('Music', @newId);
 call EventTopicInsert('Other', @newId);
-call EventTopicInsert('Performing& Visual Arts', @newId);
+call EventTopicInsert('Performing & Visual Arts', @newId);
 call EventTopicInsert('Religion & Spirituality', @newId);
 call EventTopicInsert('Science & Technology', @newId);
 call EventTopicInsert('Seasonal', @newId);
 call EventTopicInsert('Sports & Fitness', @newId);
 call EventTopicInsert('Travel & Outdoor', @newId);
 
+
+
+call EventTopicUpdate("Replaced topic", 5);
+call EventTopicUpdate("2nd Replaced topic", 7);

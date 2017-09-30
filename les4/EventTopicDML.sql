@@ -26,3 +26,18 @@ DELIMITER ;
 
 
 
+USE docent1;
+DROP PROCEDURE IF EXISTS EventTopicUpdate;
+DELIMITER //
+CREATE PROCEDURE `EventTopicUpdate`
+(
+	pName NVARCHAR (120) ,
+	pId INT 
+)
+BEGIN
+UPDATE `EventTopic`
+	SET
+		`Name` = pName
+	WHERE `EventTopic`.`Id` = pId;
+END //
+DELIMITER ;

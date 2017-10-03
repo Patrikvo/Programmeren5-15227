@@ -1,3 +1,4 @@
+
 USE docent1;
 DROP PROCEDURE IF EXISTS EventTopicInsert;
 DELIMITER //
@@ -25,6 +26,8 @@ END //
 DELIMITER ;
 
 
+-- -------------------------------------------------------------------------------------------
+
 
 USE docent1;
 DROP PROCEDURE IF EXISTS EventTopicUpdate;
@@ -43,6 +46,7 @@ END //
 DELIMITER ;
 
 
+-- -------------------------------------------------------------------------------------------
 
 
 USE docent1;
@@ -58,6 +62,8 @@ DELETE FROM `EventTopic`
 END //
 DELIMITER ;
 
+
+-- -------------------------------------------------------------------------------------------
 
 
 USE docent1;
@@ -77,6 +83,9 @@ END //
 DELIMITER ;
 
 
+-- -------------------------------------------------------------------------------------------
+
+
 USE docent1;
 DROP PROCEDURE IF EXISTS EventTopicSelectAll;
 DELIMITER //
@@ -90,6 +99,9 @@ SELECT `EventTopic`.`Name`,
 	ORDER BY `Name`;
 END //
 DELIMITER ;
+
+
+-- -------------------------------------------------------------------------------------------
 
 
 USE docent1;
@@ -110,6 +122,8 @@ END //
 DELIMITER ;
 
 
+-- -------------------------------------------------------------------------------------------
+
 
 USE docent1;
 DROP PROCEDURE IF EXISTS EventTopicSelectLikeName;
@@ -127,6 +141,9 @@ SELECT `EventTopic`.`Name`,
 	ORDER BY `EventTopic`.`Name`;
 END //
 DELIMITER ;
+
+
+-- -------------------------------------------------------------------------------------------
 
 
 USE docent1;

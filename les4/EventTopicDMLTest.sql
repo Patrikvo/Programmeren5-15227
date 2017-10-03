@@ -33,3 +33,5 @@ call EventTopicSelectOne(5);
 call EventTopicSelectAll();
 
 call EventTopicSelectByName('Seasonal');
+
+call EventTopicSelectLikeName('s');

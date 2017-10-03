@@ -108,3 +108,22 @@ SELECT `EventTopic`.`Name`,
 	ORDER BY `EventTopic`.`Name`;
 END //
 DELIMITER ;
+
+
+
+USE docent1;
+DROP PROCEDURE IF EXISTS EventTopicSelectLikeName;
+DELIMITER //
+CREATE PROCEDURE `EventTopicSelectLikeName`
+(
+	pName NVARCHAR (120) 
+)
+BEGIN
+SELECT `EventTopic`.`Name`,
+	`EventTopic`.`Id`
+ 
+	FROM `EventTopic`
+	WHERE `EventTopic`.`Name` like CONCAT(pName, '%')
+	ORDER BY `EventTopic`.`Name`;
+END //
+DELIMITER ;

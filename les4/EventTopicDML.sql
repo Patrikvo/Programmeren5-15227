@@ -57,3 +57,24 @@ DELETE FROM `EventTopic`
 	WHERE `EventTopic`.`Id` = pId;
 END //
 DELIMITER ;
+
+
+
+USE docent1;
+DROP PROCEDURE IF EXISTS EventTopicSelectOne;
+DELIMITER //
+CREATE PROCEDURE `EventTopicSelectOne`
+(
+	 pId INT 
+)
+BEGIN
+SELECT `EventTopic`.`Name`,
+	`EventTopic`.`Id`
+ 
+FROM `EventTopic`
+	WHERE `EventTopic`.`Id` = pId;
+END //
+DELIMITER ;
+
+
+

@@ -27,3 +27,5 @@ call EventTopicUpdate("2nd Replaced topic", 7);
 
 call EventTopicDelete(1);
 call EventTopicDelete(10);
+
+call EventTopicSelectOne(5);

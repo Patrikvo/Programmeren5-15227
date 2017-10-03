@@ -77,4 +77,16 @@ END //
 DELIMITER ;
 
 
-
+USE docent1;
+DROP PROCEDURE IF EXISTS EventTopicSelectAll;
+DELIMITER //
+CREATE PROCEDURE `EventTopicSelectAll`
+(
+)
+BEGIN
+SELECT `EventTopic`.`Name`,
+	`EventTopic`.`Id`
+	FROM `EventTopic`
+	ORDER BY `Name`;
+END //
+DELIMITER ;

@@ -29,3 +29,5 @@ call EventTopicDelete(1);
 call EventTopicDelete(10);
 
 call EventTopicSelectOne(5);
+
+call EventTopicSelectAll();

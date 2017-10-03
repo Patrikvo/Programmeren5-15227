@@ -90,3 +90,21 @@ SELECT `EventTopic`.`Name`,
 	ORDER BY `Name`;
 END //
 DELIMITER ;
+
+
+USE docent1;
+DROP PROCEDURE IF EXISTS EventTopicSelectByName;
+DELIMITER //
+CREATE PROCEDURE `EventTopicSelectByName`
+(
+	 pName NVARCHAR (120) 
+)
+BEGIN
+SELECT `EventTopic`.`Name`,
+	`EventTopic`.`Id`
+
+	FROM `EventTopic`
+	WHERE `EventTopic`.`Name` = pName
+	ORDER BY `EventTopic`.`Name`;
+END //
+DELIMITER ;

@@ -9,6 +9,7 @@ namespace hwapp
         {
             FirstLesson.CountTo(5);
             FirstLesson.ShowSongWriters();
+            Console.ReadKey();
         }
     }
 }

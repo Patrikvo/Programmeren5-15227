@@ -32,7 +32,7 @@ namespace AdoDotNet
                 }
                 else
                 {
-                    Console.WriteLine("No rows found.");
+                    Console.WriteLine("No rows found. ");
                 }
                 reader.Close();
             }

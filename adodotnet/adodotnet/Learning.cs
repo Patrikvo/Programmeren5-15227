@@ -11,13 +11,13 @@ namespace AdoDotNet
         public static void TestMySqlConnector()
         {
             MySqlConnection connection = new MySql.Data.MySqlClient.MySqlConnection();
-            string ConnectionString = "server= x.x.x.x; user id=docent1;password=xx;port=3306;database=docent1;SslMode=none;";
+            string ConnectionString = "server= 164.132.231.13; user id=user7;password=N7EMVJ96;port=3306;database=user7;SslMode=none;";
             connection.ConnectionString = ConnectionString;
             Console.WriteLine("Connectie gemaakt.");
             using (connection)
             {
                 MySqlCommand command = new MySqlCommand();
-                string sqlStatement = "select Name, Id from EventCategory;";
+                string sqlStatement = "select Name, Id from EventTopic;";
                 command.Connection = connection;
                 command.CommandText = sqlStatement;
                 connection.Open();

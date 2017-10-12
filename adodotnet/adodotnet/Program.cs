@@ -6,8 +6,10 @@ namespace AdoDotNet
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Leren werken met ADO.NET in .NET Core!");
-            Learning.TestMySqlConnector();
+           // Console.WriteLine("Leren werken met ADO.NET in .NET Core!");
+           // Learning.TestMySqlConnector();
+            ConfigurationInDotNetCore.LearnDotNetCoreConfigurationApi();
+            Console.ReadKey();
         }
     }
 }

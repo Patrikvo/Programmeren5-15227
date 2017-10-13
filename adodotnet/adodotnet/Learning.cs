@@ -39,7 +39,20 @@ namespace AdoDotNet
             Console.ReadKey();
         }
 
-
+        public static void EventCategoryDalTest()
+        {
+            Console.WriteLine("EvenCategory DAL test");
+            AdoDotNet.Dal.EventCategory dal = new AdoDotNet.Dal.EventCategory();
+            List<AdoDotNet.Bll.EventCategory> list = dal.ReadAll();
+            Console.WriteLine($"{dal.RowCount} {dal.Message}");
+            foreach (AdoDotNet.Bll.EventCategory item in list)
+                Console.WriteLine("{0} {1}", item.Id, item.Name);
+            Console.WriteLine();
+            dal.ReadOne(4);
+            Console.WriteLine($"{dal.RowCount} {dal.Message}");
+            dal.ReadOne(200);
+            Console.WriteLine($"{dal.RowCount} {dal.Message}");
+        }
 
 
     }

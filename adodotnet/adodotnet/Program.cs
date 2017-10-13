@@ -8,7 +8,11 @@ namespace AdoDotNet
         {
            // Console.WriteLine("Leren werken met ADO.NET in .NET Core!");
            // Learning.TestMySqlConnector();
-            ConfigurationInDotNetCore.LearnDotNetCoreConfigurationApi();
+         //   ConfigurationInDotNetCore.LearnDotNetCoreConfigurationApi();
+
+
+            Learning.EventCategoryDalTest();
+
             Console.ReadKey();
         }
     }

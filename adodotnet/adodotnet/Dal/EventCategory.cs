@@ -270,5 +270,55 @@ namespace AdoDotNet.Dal
             return result;
         }
 
+
+
+        public int Delete(int Id)
+        {
+            MySqlConnection connection = new MySqlConnection(this.connectionString);
+            // in de CommandText parameter geven we de naam van de stored procedure mee
+            MySqlCommand command = new MySqlCommand("EventCategoryDelete", connection);
+            // zeg aan het command object dat het een stored procedure
+            // zal krijgen en geen SQL Statement
+            command.CommandType = CommandType.StoredProcedure;
+            // voeg de parameters toe die aan de stored procedure doorgegeven moeten worden
+            MySqlParameter pId = new MySqlParameter();
+            pId.ParameterName = "pId";
+            pId.DbType = DbType.Int32;
+            // De Id van de rij die  moet worden geüpdated
+            pId.Value = Id;
+            command.Parameters.Add(pId);
+
+            Message = "Niets te melden";
+            // we gaan ervan uit dat het mislukt
+            int result = 0;
+            using (connection)
+            {
+                try
+                {
+                    connection.Open();
+                    //Verbinding geslaagd
+                    result = command.ExecuteNonQuery();
+                    // we moeten kijken naar de return van ExecuteNonQuery
+                    // retourneert het aantal rijen dat geüpdated is
+                    // is geüpdated als dat getal positief is
+                    if (result <= 0)
+                    {
+                        Message = $"De categorie met de Id {Id} kon niet worden gedeleted!";
+                    }
+                    else
+                    {
+                        Message = $"De categorie met de Id {Id} is gedeleted!";
+                    }
+                }
+                catch (MySqlException e)
+                {
+                    this.message = e.Message;
+                }
+                RowCount = result;
+            }
+            // 0 of het aantal rijen dat gedeleted is
+            return result;
+        }
+
     }
 }

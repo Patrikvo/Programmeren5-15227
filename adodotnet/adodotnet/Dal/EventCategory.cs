@@ -153,5 +153,71 @@ namespace AdoDotNet.Dal
 
 
 
+        public int Create(Bll.EventCategory bll)
+        {
+            MySqlConnection connection = new MySqlConnection(this.connectionString);
+            // in de CommandText parameter geven we de naam van de stored procedure mee
+            MySqlCommand command = new MySqlCommand("EventCategoryInsert", connection);
+            // zeg aan het command object dat het een stored procedure
+            // zal krijgen en geen SQL Statement
+            command.CommandType = CommandType.StoredProcedure;
+            // voeg de parameters toe die aan de stored procedure doorgegeven moeten worden
+            MySqlParameter pName = new MySqlParameter();
+            pName.ParameterName = "pName";
+            pName.DbType = DbType.String;
+            pName.Value = bll.Name;
+            command.Parameters.Add(pName);
+            MySqlParameter pId = new MySqlParameter();
+            pId.ParameterName = "pId";
+            pId.DbType = DbType.Int32;
+            // om de out parameter van de stored procedure op te vangen
+            // die stuurt de Id van de nieuw toegevoegde rij terug
+            pId.Direction = ParameterDirection.Output;
+            command.Parameters.Add(pId);
+
+            Message = "Niets te melden";
+            // we gaan ervan uit dat het mislukt
+            int result = 0;
+            using (connection)
+            {
+                try
+                {
+                    connection.Open();
+                    //Verbinding geslaagd
+                    result = command.ExecuteNonQuery();
+                    // we moeten kijken naar de waarde van out parameter
+                    // van Insert stored procedure. Als de naam van de
+                    // category al bestaat, retourneert de out parameter van
+                    // de stored procedure
+                    // -1
+                    if ((int)pId.Value == -100)
+                    {
+                        Message = $"De categorie met de naam {bll.Name} bestaat al!";
+                        result = -100;
+                    }
+                    else if (result <= 0)
+                    {
+                        Message = $"De categorie met de naam {bll.Name} kon niet worden geïnserted!";
+                        this.message = "EventCategory is niet geïnserted.";
+                    }
+                    else
+                    {
+                        Message = $"De categorie met de naam {bll.Name} is geïnserted!";
+                        result = (int)pId.Value;
+                    }
+                }
+                catch (MySqlException e)
+                {
+                    this.message = e.Message;
+                }
+            }
+            // 0 of de Id van de nieuwe rij of -100 als de naam van de categorie al bestaat
+            return result;
+        }
+
+
+
+
+
     }
 }

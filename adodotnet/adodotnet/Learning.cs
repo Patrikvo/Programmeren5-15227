@@ -57,7 +57,7 @@ namespace AdoDotNet
             Console.WriteLine($"{dal.RowCount} {dal.Message}");
 
             Console.WriteLine();
-            AdoDotNet.Bll.EventCategory bll = dal.ReadOne(6);
+            AdoDotNet.Bll.EventCategory bll = dal.ReadOne(5);
             Console.WriteLine($" {dal.RowCount} {dal.Message}");
             // we proberen deze gevonden categorie weer toe te voegen
             dal.Create(bll);
@@ -77,8 +77,11 @@ namespace AdoDotNet
             // En proberen die te updaten
             dal.Update(bll);
             Console.WriteLine($" {dal.RowCount} rij(en) gewijzigd, {dal.Message}");
-        
-    }
+
+            dal.Delete(bll.Id);
+            Console.WriteLine($" {dal.RowCount} rij(en) gedeleted, {dal.Message}");
+
+        }
 
 
     }

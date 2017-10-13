@@ -47,11 +47,26 @@ namespace AdoDotNet
             Console.WriteLine($"{dal.RowCount} {dal.Message}");
             foreach (AdoDotNet.Bll.EventCategory item in list)
                 Console.WriteLine("{0} {1}", item.Id, item.Name);
+
             Console.WriteLine();
+            
+
             dal.ReadOne(4);
             Console.WriteLine($"{dal.RowCount} {dal.Message}");
             dal.ReadOne(200);
             Console.WriteLine($"{dal.RowCount} {dal.Message}");
+
+            Console.WriteLine();
+            AdoDotNet.Bll.EventCategory bll = dal.ReadOne(6);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
+            // we proberen deze gevonden categorie weer toe te voegen
+            dal.Create(bll);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
+            // we wijzigen de naam van de categorie
+            bll.Name = "Hackathon Programmeren";
+            // En proberen die toe te voegen
+            dal.Create(bll);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
         }
 
 

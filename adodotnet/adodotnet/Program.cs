@@ -6,17 +6,14 @@ namespace AdoDotNet
     {
         static void Main(string[] args)
         {
-           // Console.WriteLine("Leren werken met ADO.NET in .NET Core!");
-           // Learning.TestMySqlConnector();
-         //   ConfigurationInDotNetCore.LearnDotNetCoreConfigurationApi();
+            // Console.WriteLine("Leren werken met ADO.NET in .NET Core!");
+            // Learning.TestMySqlConnector();
+            // ConfigurationInDotNetCore.LearnDotNetCoreConfigurationApi();
+            // Learning.EventCategoryDalTest();
 
-
-            Learning.EventCategoryDalTest();
+            Learning.EventTopicDalTest();
 
             Console.ReadKey();
         }
     }
 }
-
-
-// BLL EVEnt category aanmaken

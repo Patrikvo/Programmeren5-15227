@@ -84,5 +84,78 @@ namespace AdoDotNet
         }
 
 
+        public static void EventTopicDalTest()
+        {
+            // Door de Update en Delete uit te voeren op een in deze test aangemaakte rij, blijft de tabel ongewijzigd.
+
+            Console.WriteLine("EvenTopic DAL test");
+
+
+            Console.WriteLine("EvenTopic DAL ReadAll");
+            // Lees alle rijen van de EventTopic tabel.
+
+            AdoDotNet.Dal.EventTopic dal = new AdoDotNet.Dal.EventTopic();
+            List<AdoDotNet.Bll.EventTopic> list = dal.ReadAll();
+            Console.WriteLine($"{dal.RowCount} {dal.Message}");
+            foreach (AdoDotNet.Bll.EventTopic item in list)
+                Console.WriteLine("{0} {1}", item.Id, item.Name);
+
+
+            Console.WriteLine();
+
+
+            Console.WriteLine("EvenTopic DAL ReadOne");
+            //Lees één specifieke rij uit de tabel.
+    
+            dal.ReadOne(4);
+            Console.WriteLine($"{dal.RowCount} {dal.Message}");
+            dal.ReadOne(200);
+            Console.WriteLine($"{dal.RowCount} {dal.Message}");
+
+
+            Console.WriteLine();
+
+
+            Console.WriteLine("EvenTopic DAL Create");
+            // maak een nieuwe rij aan. deze wordt door de volgende tests herbruikt. Dit voorkomt dat de tabel telkens opnieuw aangemaakt moet worden.
+
+            AdoDotNet.Bll.EventTopic bll = dal.ReadOne(5);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
+            // we proberen deze gevonden topic weer toe te voegen
+            dal.Create(bll);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
+            // we wijzigen de naam van de topic
+            bll.Name = "Ongespecifierd";
+            // En proberen die toe te voegen
+            int newID = dal.Create(bll);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
+
+
+            Console.WriteLine();
+
+
+            Console.WriteLine("EvenTopic DAL Update ");
+            // de eerder aangemaakte rij wijzigen.
+
+            bll = dal.ReadOne(newID);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
+            // we wijzigen de naam van de eerder toegevoegde topic
+            bll.Name = "computer games";
+            // En proberen die te updaten
+            dal.Update(bll);
+            Console.WriteLine($" {dal.RowCount} rij(en) gewijzigd, {dal.Message}");
+
+
+            Console.WriteLine();
+
+
+            Console.WriteLine("EvenTopic DAL Delete");
+            // de eerder toegevoegde (en gewijzigde) rij wissen.
+
+            dal.Delete(bll.Id);
+            Console.WriteLine($" {dal.RowCount} rij(en) gedeleted, {dal.Message}");
+
+        }
+
     }
 }

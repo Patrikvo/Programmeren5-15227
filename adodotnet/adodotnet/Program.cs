@@ -13,3 +13,6 @@ namespace AdoDotNet
         }
     }
 }
+
+
+// BLL EVEnt category aanmaken

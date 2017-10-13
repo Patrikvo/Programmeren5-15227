@@ -67,7 +67,18 @@ namespace AdoDotNet
             // En proberen die toe te voegen
             dal.Create(bll);
             Console.WriteLine($" {dal.RowCount} {dal.Message}");
-        }
+
+
+            Console.WriteLine();
+            dal.ReadOne(bll.Id);
+            Console.WriteLine($" {dal.RowCount} {dal.Message}");
+            // we wijzigen de naam van de categorie met Id = 6
+            bll.Name = "Hackathon Programmeren Deel 2";
+            // En proberen die te updaten
+            dal.Update(bll);
+            Console.WriteLine($" {dal.RowCount} rij(en) gewijzigd, {dal.Message}");
+        
+    }
 
 
     }

@@ -217,7 +217,58 @@ namespace AdoDotNet.Dal
 
 
 
+        public int Update(Bll.EventCategory bll)
+        {
+            MySqlConnection connection = new MySqlConnection(this.connectionString);
+            // in de CommandText parameter geven we de naam van de stored procedure mee
+            MySqlCommand command = new MySqlCommand("EventCategoryUpdate", connection);
+            // zeg aan het command object dat het een stored procedure
+            // zal krijgen en geen SQL Statement
+            command.CommandType = CommandType.StoredProcedure;
+            // voeg de parameters toe die aan de stored procedure doorgegeven moeten worden
+            MySqlParameter pId = new MySqlParameter();
+            pId.ParameterName = "pId";
+            pId.DbType = DbType.Int32;
+            // De Id van de rij die  moet worden geüpdated
+            pId.Value = bll.Id;
+            command.Parameters.Add(pId);
+            MySqlParameter pName = new MySqlParameter();
+            pName.ParameterName = "pName";
+            pName.DbType = DbType.String;
+            pName.Value = bll.Name;
+            command.Parameters.Add(pName);
 
+            Message = "Niets te melden";
+            // we gaan ervan uit dat het mislukt
+            int result = 0;
+            using (connection)
+            {
+                try
+                {
+                    connection.Open();
+                    //Verbinding geslaagd
+                    result = command.ExecuteNonQuery();
+                    // we moeten kijken naar de return van ExecuteNonQuery
+                    // retourneert het aantal rijen dat geüpdated is
+                    // is geüpdated als dat getal positief is
+                    if (result <= 0)
+                    {
+                        Message = $"De categorie met de naam {bll.Name} kon niet worden geüpdated!";
+                    }
+                    else
+                    {
+                        Message = $"De categorie met de naam {bll.Name} is geüpdated!";
+                    }
+                }
+                catch (MySqlException e)
+                {
+                    this.message = e.Message;
+                }
+                RowCount = result;
+            }
+            // 0 of het aantal rijen dat geüpdated is
+            return result;
+        }
 
     }
 }

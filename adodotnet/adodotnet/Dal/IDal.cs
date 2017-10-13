@@ -10,6 +10,7 @@ namespace AdoDotNet.Dal
         int RowCount { get; }
         List<T> ReadAll();
         T ReadOne(int id);
+
         int Create(T bll);
         int Update(T bll);
         int Delete(int id);

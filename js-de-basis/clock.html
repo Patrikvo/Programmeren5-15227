@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript - De tijd controleren met JS - setInterval</title>
+    <meta charset="utf-8" />
+    <meta name="application-name" content="Multimedia JavaScript">
+    <meta name="description" content="De tijd controleren met JS - setInterval">
+    <meta name="keywords" content="HTML, JavaScript, setInterval">
+    <meta name="author" content="Jef Inghelbrecht">
+</head>
+<body>
+    <p id="clock1">Klok 1 begint zo te tikken... en stopt alweer 10 seconden nadat de tweede klok is gestart...</p>
+    <p id="clock2">Klok 2 begint te tikken binnen 5 seconden... "</p>
+    <script type="text/javascript">
+        var clock1 = setInterval(tick1, 1000);
+        setTimeout(function() {clearInterval(clock1)}, 15000);
+
+        function tick1() {
+            var d = new Date();
+            // To access an HTML element, use the document.getElementById(id) method.
+            // The id attribute defines the HTML element.
+            // The innerHTML property defines the HTML content.
+            document.getElementById('clock1').innerHTML = d.toLocaleTimeString();
+        }
+
+        var clock2 = setTimeout(function() {
+            setInterval(tick2, 2000);
+            setTimeout(function() {clearInterval(clock1)}, 15000);}, 5000);
+
+        function tick2() {
+            var d = new Date();
+            // To access an HTML element, use the document.getElementById(id) method.
+            // The id attribute defines the HTML element.
+            // The innerHTML property defines the HTML content.
+            document.getElementById('clock2').innerHTML = d.toLocaleTimeString();
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-use docent1;
+use user7;
 
 -- Waarden toevoegen aan de table.
 

@@ -6,8 +6,8 @@ SET GLOBAL sql_mode = 'ANSI';
 -- Database maken (alleen op je lokale MySQL Server, niet op die van de school) en activeren
 
 -- If database does not exist, create the database
-CREATE DATABASE IF NOT EXISTS docent1;
-USE docent1;
+CREATE DATABASE IF NOT EXISTS user7;
+USE user7;
 
 --  Foreign Key constraints opheffen
 

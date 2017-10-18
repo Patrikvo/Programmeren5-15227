@@ -1,5 +1,5 @@
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicInsert;
 DELIMITER //
 CREATE PROCEDURE `EventTopicInsert`
@@ -29,7 +29,7 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------
 
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicUpdate;
 DELIMITER //
 CREATE PROCEDURE `EventTopicUpdate`
@@ -49,7 +49,7 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------
 
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicDelete;
 DELIMITER //
 CREATE PROCEDURE `EventTopicDelete`
@@ -66,7 +66,7 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------
 
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicSelectOne;
 DELIMITER //
 CREATE PROCEDURE `EventTopicSelectOne`
@@ -86,7 +86,7 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------
 
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicSelectAll;
 DELIMITER //
 CREATE PROCEDURE `EventTopicSelectAll`
@@ -104,7 +104,7 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------
 
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicSelectByName;
 DELIMITER //
 CREATE PROCEDURE `EventTopicSelectByName`
@@ -125,7 +125,7 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------
 
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicSelectLikeName;
 DELIMITER //
 CREATE PROCEDURE `EventTopicSelectLikeName`
@@ -146,7 +146,7 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------
 
 
-USE docent1;
+USE user7;
 DROP PROCEDURE IF EXISTS EventTopicSelectLikeXName;
 DELIMITER //
 CREATE PROCEDURE `EventTopicSelectLikeXName`

@@ -38,16 +38,21 @@
             width: 250px;
         }
     </style>
-    
-    
-    
-    
-    
-    
 </head>
 
 <body>
+    <h1>Marquee: Lichtkrant</h1>
     
+    <div id="marquee" onMouseOver="pauseMarquee();" onMouseOut="pauseMarquee();">
+        <div id="scroll-area"> 
+            De eerste versies van de lichtkrant werd in 1870 uitgevonden, ze bestonden uit een groot aantal geschakelde gloeilampen. De Ticker tapes kan men vooral op Times Square in New York vinden. In 1928 werd hier door The New York Times de eerste lichtkrant geïnstalleerd. Nieuwsstations op televisie gebruiken de lichtkrant vaak om er de laatste nieuwsberichten en de hoofdpunten mee bekend te maken. Op die manier is men in korte tijd op de hoogte. Ook is een lichtkrant handig om de laatste standen van de aandelen te laten zien.Lichtkranten worden ook veelvuldig op websites geplaatst. Zo heeft CNBC een ticker tape op haar website staan, waarop de laatste beurskoersen van Nasdaq en Dow Jones aandelen te zien zijn. Ticker tapes zijn ook een veelvoorkomend attribuut van contactprofielenwebsites. Mensen kunnen hierbij door te sms'en zich via de lichtkrant promoten. Een lichtkrant wordt ook wel gebruikt voor boventiteling bij theater- en muziekvoorstellingen om al dan niet vertaalde teksten weer te geven. Hierbij staat de tekst stil en wordt hij veelal op twee regels weergegeven zoals bij ondertiteling. Eenzelfde systeem wordt gebruikt voor informatieverstrekking, bijvoorbeeld boven autosnelwegen of op stations van openbaar vervoer. Bron: https://nl.wikipedia.org/wiki/Lichtkrant
+        </div>
+    </div>
+    
+    <div class="commandbar">
+        <button onClick="speedUpMarquee();" type="button">Sneller!</button>
+        <button onClick="slowDownMarquee();" type="button">Trager!</button>
+    </div>
 </body>
 
 

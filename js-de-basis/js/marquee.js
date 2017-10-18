@@ -1,4 +1,4 @@
-var scrollDelay = 2000; // Vertraging tot het scrollen begint.
+var scrollDelay = 200; // Vertraging tot het scrollen begint.
 var marqueeSpeed = 1;    // hoe snel scrolled de tekst. hoger = sneller.
 var timer;
 
@@ -17,14 +17,18 @@ var scrolling = function() {
 }
 
 var startScrolling = function(){
+    
     timer = setInterval(scrolling, 30);
 }
 
 var initializeMarquee = function(){
+    
     scrollArea = document.getElementById("scroll-area");
     scrollArea.style.top = 0;
+    
     marquee = document.getElementById("marquee");
     setTimeout(startScrolling, scrollDelay );
+   
 }
 
 // onthoud de gewijzigde snelheid niet.

@@ -13,6 +13,11 @@ var startingMinutes;
 var currentSeconds;
 var currentMinutes;
 
+var startingSecondsHeight;
+var startingMinutesHeight;
+var startingSecondsTop;
+var startingMinutesTop;
+
 var timer;
 
 var startCountdown = function(){
@@ -20,7 +25,7 @@ var startCountdown = function(){
         isCounting = true;
         getControls();
         parseTimeFields();
-    
+        getInitialGraphicValues();
         currentSeconds = startingSeconds;
         currentMinutes = startingMinutes;
     
@@ -35,6 +40,12 @@ var resetCountdown = function(){
     currentMinutes = startingMinutes;
     updateStopwatch();
     isCounting = false;
+    
+    secondsRectangle.style.height = startingSecondsHeight + "px";
+    secondsRectangle.style.top = startingSecondsTop + "px";
+    
+    MinutesRectangle.style.height = startingMinutesHeight + "px";
+    MinutesRectangle.style.top = startingMinutesTop + "px";
 }
 
 
@@ -61,6 +72,7 @@ var doTimestep = function() {
     else  {if (currentMinutes >= 1) { currentMinutes--; currentSeconds = 59; } 
     else { reachedZero = true; clearInterval(timer); } }
     updateStopwatch();
+    updateGraphics();
 }
 
 var updateStopwatch = function(){
@@ -68,4 +80,37 @@ var updateStopwatch = function(){
     minutes.value = currentMinutes;
 }
 
-// todo: grafische weergave van de tijd.
+var getInitialGraphicValues = function(){
+    startingSecondsHeight = secondsRectangle.offsetHeight;
+    startingMinutesHeight = MinutesRectangle.offsetHeight;
+    startingSecondsTop = secondsRectangle.offsetTop;
+    startingMinutesTop = MinutesRectangle.offsetTop;
+}
+
+
+var updateGraphics = function(){
+    
+    
+    if (currentSeconds > 0){
+        var secondsRatio = currentSeconds / 60.0;
+        var secondsDisplacement = secondsRatio * startingSecondsHeight;
+        
+        secondsRectangle.style.height = (secondsDisplacement) + "px";
+        secondsRectangle.style.top = (startingSecondsTop + startingSecondsHeight- secondsDisplacement)  + "px";
+        
+    }
+    else{
+        secondsRectangle.style.height = "0px";
+    }
+    
+    
+    if (currentMinutes > 0){
+        var minutesRatio = currentMinutes / 60.0;
+        var minutesDisplacement = minutesRatio * startingMinutesHeight;
+        MinutesRectangle.style.height = (minutesDisplacement) + "px";
+        MinutesRectangle.style.top = (startingMinutesTop +startingMinutesHeight- minutesDisplacement) + "px";
+    }
+    else{
+        MinutesRectangle.style.height = "0px";
+    }
+}

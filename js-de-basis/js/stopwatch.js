@@ -20,47 +20,51 @@ var startingMinutesTop;
 
 var timer;
 
+// constants
+var MaxSeconds = 59;
+var MaxMinutes = 59;
+
+
+
 var startCountdown = function(){
     if (!isCounting){
         isCounting = true;
-        getControls();
-        parseTimeFields();
-        getInitialGraphicValues();
-        currentSeconds = startingSeconds;
-        currentMinutes = startingMinutes;
-    
-        timer = setInterval(doTimestep, 1000);
+        timer = setInterval(doTimestep, 1000);  // 1000ms
     }
 }
+
 
 var resetCountdown = function(){
     clearInterval(timer);
     
+	if (isNaN(startingSeconds) || startingSeconds > MaxSeconds) { startingSeconds = MaxSeconds;}
+	if (isNaN(startingMinutes) || startingMinutes > MaxMinutes) { startingMinutes = MaxMinutes;}
+	
     currentSeconds = startingSeconds;
     currentMinutes = startingMinutes;
     updateStopwatch();
+	updateGraphics();	
+	
     isCounting = false;
-    
-    secondsRectangle.style.height = startingSecondsHeight + "px";
-    secondsRectangle.style.top = startingSecondsTop + "px";
-    
-    MinutesRectangle.style.height = startingMinutesHeight + "px";
-    MinutesRectangle.style.top = startingMinutesTop + "px";
+}
+
+
+var inputMinutesChanged = function() {
+	parseTimeFields();
+	currentSeconds = startingSeconds;
+    currentMinutes = startingMinutes;
+	updateGraphics();
+}
+
+
+var inputSecondsChanged = function() {
+	inputMinutesChanged();
 }
 
 
 
 
-var getControls = function(){
-    secondsRectangle = document.getElementById("secondsRectangle");
-    MinutesRectangle = document.getElementById("MinutesRectangle");
-    
-    minutes = document.getElementById("minutes");
-    seconds = document.getElementById("seconds");
-    
-    startButton = document.getElementById("startButton");
-    resetButton = document.getElementById("resetButton");
-}
+
 
 var parseTimeFields = function () {
     startingSeconds = parseInt(seconds.value,10);
@@ -69,7 +73,7 @@ var parseTimeFields = function () {
 
 var doTimestep = function() {
     if (currentSeconds >= 1) {currentSeconds--; }
-    else  {if (currentMinutes >= 1) { currentMinutes--; currentSeconds = 59; } 
+    else  {if (currentMinutes >= 1) { currentMinutes--; currentSeconds = MaxSeconds; } 
     else { reachedZero = true; clearInterval(timer); } }
     updateStopwatch();
     updateGraphics();
@@ -80,24 +84,16 @@ var updateStopwatch = function(){
     minutes.value = currentMinutes;
 }
 
-var getInitialGraphicValues = function(){
-    startingSecondsHeight = secondsRectangle.offsetHeight;
-    startingMinutesHeight = MinutesRectangle.offsetHeight;
-    startingSecondsTop = secondsRectangle.offsetTop;
-    startingMinutesTop = MinutesRectangle.offsetTop;
-}
+
 
 
 var updateGraphics = function(){
-    
-    
     if (currentSeconds > 0){
         var secondsRatio = currentSeconds / 60.0;
         var secondsDisplacement = secondsRatio * startingSecondsHeight;
         
         secondsRectangle.style.height = (secondsDisplacement) + "px";
         secondsRectangle.style.top = (startingSecondsTop + startingSecondsHeight- secondsDisplacement)  + "px";
-        
     }
     else{
         secondsRectangle.style.height = "0px";
@@ -114,3 +110,38 @@ var updateGraphics = function(){
         MinutesRectangle.style.height = "0px";
     }
 }
+
+
+// Maak de stopwatch klaar voor eerste gebruik.
+var initializeStopwatch = function() {
+	getControls();
+	getInitialGraphicSizes();
+	inputMinutesChanged();
+}
+
+// Vind de controls (knoppen, tekstvak en div's) in de DOM en plaats de verwijzingen in variabelen.
+var getControls = function(){
+	
+	// rechthoeken die de overgebleven tijd tonen.
+    secondsRectangle = document.getElementById("secondsRectangle");
+    MinutesRectangle = document.getElementById("MinutesRectangle");
+    
+	// tekstvelden waarin de seconden en de minuten worden ingevoerd.
+    minutes = document.getElementById("minutes");
+    seconds = document.getElementById("seconds");
+    
+	// de knoppen van de stopwatch.
+    startButton = document.getElementById("startButton");
+    resetButton = document.getElementById("resetButton");
+}
+
+// vind de startgrootte van de rechthoeken.
+var getInitialGraphicSizes = function(){
+    startingSecondsHeight = secondsRectangle.offsetHeight;
+    startingMinutesHeight = MinutesRectangle.offsetHeight;
+    startingSecondsTop = secondsRectangle.offsetTop;
+    startingMinutesTop = MinutesRectangle.offsetTop;
+}
+
+
+window.onload=initializeStopwatch();

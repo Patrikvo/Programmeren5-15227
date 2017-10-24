@@ -26,17 +26,26 @@ var timeUntilReset = 1000;
 var baseTen = 10;
 
 
-// start de stopwatch.
+// start of pauseer de stopwatch.
 var startCountdown = function(){
     if (!isCounting){
+        // start de stopwatch
         isCounting = true;
         timer = setInterval(doTimestep, 1000);  // 1000ms
+        startButton.innerHTML = "Stop";
+    }
+    else{
+        // pauseer de stopwatch
+        isCounting = false;
+        clearInterval(timer);
+        startButton.innerHTML = "Start";
     }
 }
 
 
 // reset de stopwatch. de seconden en minuten worden ingesteld op de laatst ingegeven waarden.
 var resetCountdown = function(){
+    startButton.innerHTML = "Start";
     clearInterval(timer);
     
 	if (isNaN(startingSeconds) || startingSeconds > MaxSeconds) { startingSeconds = MaxSeconds;}

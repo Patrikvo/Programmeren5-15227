@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>stopwatch</title>
-    
-    
+    <title>Stopwatch</title>
+   
     
     <style>
         * {
@@ -12,9 +11,12 @@
         }
         
         h1 {
+			position: absolute;
             margin-bottom: 1em;
             text-align: center;
             width: 250px;
+			left: 40px ;
+            top: 10px;
         }
         
         #secondsRectangle{
@@ -22,27 +24,45 @@
             width: 50px;
             height: 200px;
             background-color: yellow;
-            left: 160px ;
-            top: 110px;
-            
+            left: 165px ;
+            top: 90px;
         }
         
+		#secondsRectangleShadow{
+            position: absolute;
+            width: 60px;
+            height: 200px;
+            background-color: orange;
+            left: 160px ;
+            top: 90px;
+        }
+		
         #MinutesRectangle{
             position: absolute;
             width: 50px;
             height: 200px;
-            background-color: green;
+            background-color: lightgreen;
             
             left: 100px ;
-            top: 110px;
+            top: 90px;
         }
         
+		#MinutesRectangleShadow{
+            position: absolute;
+            width: 60px;
+            height: 200px;
+            background-color: green;
+            
+            left: 95px ;
+            top: 90px;
+        }
+		
         #seconds{
             position: absolute;
             width: 48px;
             height: 15px;
-            left: 160px ;
-            top: 310px;
+            left: 165px ;
+            top: 300px;
             
         }
         
@@ -51,7 +71,7 @@
             width: 48px;
             height: 15px;
             left: 100px ;
-            top: 310px;
+            top: 300px;
         }
         
         .commandbar{
@@ -60,20 +80,23 @@
             
             position: absolute;
             left: 110px;
-            top: 320px;
+            top: 310px;
         }
     </style>
     
 </head>
 
 <body>
-    <h1>Stopwatch</h1>
+    <h1>Een eenvoudige stopwatch</h1>
     
+	<div id="secondsRectangleShadow"></div>
+	<div id="MinutesRectangleShadow"></div>
+	
     <div id="secondsRectangle"></div>
     <div id="MinutesRectangle"></div>
 
-
-    <textarea id='minutes' onchange="inputMinutesChanged();">0</textarea>
+	
+    <textarea id='minutes' onchange="inputMinutesChanged();">1</textarea>
     <textarea id='seconds' onchange="inputSecondsChanged();">10</textarea>
 
 
@@ -83,7 +106,5 @@
     </div>
     <script type="text/javascript" src="js/stopwatch.js" ></script>
 </body>
-
-
 
 </html>

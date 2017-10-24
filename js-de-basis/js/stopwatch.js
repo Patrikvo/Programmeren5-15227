@@ -1,5 +1,4 @@
 var isCounting = false;
-var reachedZero = false;
 var secondsRectangle;
 var MinutesRectangle;
 var minutes;
@@ -20,12 +19,14 @@ var startingMinutesTop;
 
 var timer;
 
-// constants
+// constanten
 var MaxSeconds = 59;
 var MaxMinutes = 59;
+var timeUntilReset = 1000;
+var baseTen = 10;
 
 
-
+// start de stopwatch.
 var startCountdown = function(){
     if (!isCounting){
         isCounting = true;
@@ -34,6 +35,7 @@ var startCountdown = function(){
 }
 
 
+// reset de stopwatch. de seconden en minuten worden ingesteld op de laatst ingegeven waarden.
 var resetCountdown = function(){
     clearInterval(timer);
     
@@ -48,68 +50,82 @@ var resetCountdown = function(){
     isCounting = false;
 }
 
-
+// verwerk invoer-event van het tekstveld "minuten"
 var inputMinutesChanged = function() {
 	parseTimeFields();
+	
 	currentSeconds = startingSeconds;
     currentMinutes = startingMinutes;
+	updateStopwatch();
 	updateGraphics();
 }
 
-
+// verwerk invoer-event van het tekstveld "seconden"
 var inputSecondsChanged = function() {
 	inputMinutesChanged();
 }
 
 
-
-
-
-
+// zet de tekstuele invoervelden om in geldige integers.
 var parseTimeFields = function () {
-    startingSeconds = parseInt(seconds.value,10);
-    startingMinutes = parseInt(minutes.value, 10);
+    startingSeconds = parseInt(seconds.value, baseTen);
+    startingMinutes = parseInt(minutes.value, baseTen);
+	if (isNaN(startingSeconds) || startingSeconds > MaxSeconds) { startingSeconds = MaxSeconds;}
+	if (isNaN(startingMinutes) || startingMinutes > MaxMinutes) { startingMinutes = MaxMinutes;}	
 }
 
+
+
+// update de seconden- en minutentellers. Wanneer beide nul bereikt hebben, wordt de stopwatch na een korte tijd gereset.
 var doTimestep = function() {
-    if (currentSeconds >= 1) {currentSeconds--; }
-    else  {if (currentMinutes >= 1) { currentMinutes--; currentSeconds = MaxSeconds; } 
-    else { reachedZero = true; clearInterval(timer); } }
+    if (currentSeconds >= 1) {
+		currentSeconds--; 
+	}
+    else  {
+		if (currentMinutes >= 1) { 
+			currentMinutes--; 
+			currentSeconds = MaxSeconds; 
+		} 
+		else { 
+			clearInterval(timer);  
+			setTimeout(resetCountdown, timeUntilReset);
+		} 
+	}
+	
     updateStopwatch();
     updateGraphics();
 }
 
+// update de reserende tijd in de tekstvelden.
 var updateStopwatch = function(){
     seconds.value = currentSeconds;
     minutes.value = currentMinutes;
 }
 
 
-
-
+// update de hoogte van de resterende tijd-balken.
 var updateGraphics = function(){
-    if (currentSeconds > 0){
-        var secondsRatio = currentSeconds / 60.0;
-        var secondsDisplacement = secondsRatio * startingSecondsHeight;
-        
-        secondsRectangle.style.height = (secondsDisplacement) + "px";
-        secondsRectangle.style.top = (startingSecondsTop + startingSecondsHeight- secondsDisplacement)  + "px";
-    }
-    else{
-        secondsRectangle.style.height = "0px";
-    }
+	var secondsDisplacement = calculateDisplacement(currentSeconds, startingSecondsHeight);
+	secondsRectangle.style.height = (secondsDisplacement) + "px";
+	secondsRectangle.style.top = (startingSecondsTop + startingSecondsHeight - secondsDisplacement)  + "px";
+ 
     
-    
-    if (currentMinutes > 0){
-        var minutesRatio = currentMinutes / 60.0;
-        var minutesDisplacement = minutesRatio * startingMinutesHeight;
-        MinutesRectangle.style.height = (minutesDisplacement) + "px";
-        MinutesRectangle.style.top = (startingMinutesTop +startingMinutesHeight- minutesDisplacement) + "px";
-    }
-    else{
-        MinutesRectangle.style.height = "0px";
-    }
+	var minutesDisplacement = calculateDisplacement(currentMinutes, startingMinutesHeight);
+	MinutesRectangle.style.height = (minutesDisplacement) + "px";
+    MinutesRectangle.style.top = (startingMinutesTop +startingMinutesHeight - minutesDisplacement) + "px";
 }
+
+// berekend de hoogte van de resterende tijd-balk.
+var calculateDisplacement = function(currentValue, maxHeight){
+	var displacement = 0;
+	if (currentValue > 0){
+        var ratio = currentValue / 60.0;
+        displacement = ratio * maxHeight;
+    }
+    return displacement;
+}
+
+
 
 
 // Maak de stopwatch klaar voor eerste gebruik.

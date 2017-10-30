@@ -1,5 +1,7 @@
 var sourceURL = "https://datasets.antwerpen.be/v4/gis/speelterreinen.json";
 
+/* global L */
+
 // Set the map variable
 const myMap = L.map('map');
 
@@ -27,9 +29,21 @@ function getMarkers() {
         var data = JSON.parse(this.response);
 
         const playgrounds = data.data.map(playground => {
+            var name = validateString( playground.naam, "Onbekend.");
+            
+            var street = validateString(playground.straat, "");
+            
+            var number = validateString(playground.huisnummer, "");
+            
+            var postalCode = validateString(playground.postcode, "");
+            
+            var district = validateString(playground.district, "");
+            
+            var adress = street += " " + number + " " + postalCode + " " + district;
+
             L.marker([playground.point_lat, playground.point_lng]).bindPopup(`
-            <h2>${playground.naam}</h2>
-            <p><b>Adres:</b> ${playground.straat} ${playground.huisnummer} ${playground.postcode}  ${playground.district} </p>
+            <h2>${name}</h2>
+            <p><b>Adres:</b> ${adress} </p>
             <p><b>Aantal toestellen:</b> ${playground.toestellen}</p>
             `).openPopup().addTo(myMap);
         });
@@ -44,6 +58,14 @@ function getMarkers() {
 }
 
 
+function validateString(inputText, replacementText){
+    if (inputText != null){
+        return inputText;
+    }
+    else{
+        return replacementText;
+    }
+}
 
 
 

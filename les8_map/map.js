@@ -1,25 +1,33 @@
 var sourceURL = "https://datasets.antwerpen.be/v4/gis/speelterreinen.json";
+const mapCoordinate = [51.21208495916200, 4.39278641754120];
+const mapZoomlevel = 12;
 
 /* global L */
 
-// Set the map variable
-const myMap = L.map('map');
 
-// Load the basemap
-const myBasemap = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 12,
-  attribution: '� <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-});
+// Load the map as background and center on the target city.
+function prepareMap() {
+    // Set the map variable
+    const myMap = L.map('map');
 
-// Add basemap to map id
-myBasemap.addTo(myMap);
+    // Load the basemap
+    const myBasemap = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 12,
+        attribution: '� <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
 
-// Set view of the map
-myMap.setView([51.21208495916200, 4.39278641754120], 12);
+    // Add basemap to map id
+    myBasemap.addTo(myMap);
+
+    // Set view of the map
+    myMap.setView(mapCoordinate, mapZoomlevel);
+
+    return myMap;
+}
 
 
-
-function getMarkers() {
+// load the playground data, create markers and the sidebar.
+function getMarkers(myMap) {
     const request = new XMLHttpRequest();
     request.open('GET', sourceURL, true);
 
@@ -71,29 +79,30 @@ function getMarkers() {
 
 
         // create sidebar
-
-        const sidebar = document.getElementById('playgrounds');
-        const p = document.createElement("p");
-        p.innerHTML = `<H3>Speelpleinen volgens aantal toestellen.</H3 >`;
-        sidebar.appendChild(p);
-
-        // Print all playgrounds in sidebar
-        for (var i = 0; i < 5; i++){
-            const p = document.createElement("p");
-            p.innerHTML = `<b>${categories[i]}</b > : ${categoryCount[i]}`;
-            sidebar.appendChild(p);
-        }
-
-
+        createSidebar(categories, categoryCount);
     }
-
     request.send();
-
-
-
 }
 
 
+// creates the actual sidebar.
+function createSidebar(categories, categoryCount) {
+    const sidebar = document.getElementById('playgrounds');
+    const p = document.createElement("p");
+    p.innerHTML = `<H3>Speelpleinen volgens aantal toestellen.</H3 >`;
+    sidebar.appendChild(p);
+
+    // Print all playgrounds in sidebar with their respective number of playsets.
+    for (var i = 0; i < categories.length; i++) {
+        const p = document.createElement("p");
+        p.innerHTML = `<b>${categories[i]}</b > : ${categoryCount[i]}`;
+        sidebar.appendChild(p);
+    }
+}
+
+
+
+// returns either the original string or, if it's null, return the replacement string.
 function validateString(inputText, replacementText){
     if (inputText != null){
         return inputText;
@@ -103,6 +112,10 @@ function validateString(inputText, replacementText){
     }
 }
 
+// Initialize the map and markers.
+function initialize() {
+    var myMap = prepareMap();
+    getMarkers(myMap);
+}
 
-
-window.onload = getMarkers();
+window.onload = initialize();

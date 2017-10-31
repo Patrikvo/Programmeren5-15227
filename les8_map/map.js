@@ -48,6 +48,42 @@ function getMarkers() {
             `).openPopup().addTo(myMap);
         });
 
+        // Count each category of playgrounds.
+        var categories = [];
+        categories[0] = "minder dan 10 toestellen";
+        categories[1] = "10 tot 19 toestellen";
+        categories[2] = "20 tot 29 toestellen";
+        categories[3] = "meer dan 30 toestellen";
+        categories[4] = "Onbekend aantal toestellen";
+
+        const categoryCount = data.data.reduce((sums, playground) => {
+            var cnt = parseInt(playground.toestellen, 10);
+
+            if (isNaN(cnt))      { sums[4] = (sums[4] || 0) + 1;
+            } else if (cnt < 10) { sums[0] = (sums[0] || 0) + 1;
+            } else if (cnt < 20) { sums[1] = (sums[1] || 0) + 1;
+            } else if (cnt < 30) { sums[2] = (sums[2] || 0) + 1;
+            } else               { sums[3] = (sums[3] || 0) + 1;
+            }
+
+            return sums;
+        }, {});
+
+
+        // create sidebar
+
+        const sidebar = document.getElementById('playgrounds');
+        const p = document.createElement("p");
+        p.innerHTML = `<H3>Speelpleinen volgens aantal toestellen.</H3 >`;
+        sidebar.appendChild(p);
+
+        // Print all playgrounds in sidebar
+        for (var i = 0; i < 5; i++){
+            const p = document.createElement("p");
+            p.innerHTML = `<b>${categories[i]}</b > : ${categoryCount[i]}`;
+            sidebar.appendChild(p);
+        }
+
 
     }
 

@@ -1,4 +1,15 @@
 #map {
 	height: 100vh;
 	width: 100%;
+    z-index:1;
+}
+
+#playgrounds {
+    position: absolute;
+    left: 20px;
+    top: 150px;
+    background-color:lightgreen;
+    z-index:2;
+
+
 }

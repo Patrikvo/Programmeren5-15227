@@ -53,7 +53,12 @@ function initializeMarquee() {
 
 function pauseMarquee(event){
     // door een boolean te gebruiken, wordt de snelheid bewaard tijdens het pauzeren.
-    marqueePaused = !marqueePaused;
+    if (event.type == "mouseover") {
+        marqueePaused = true;
+    } else {
+        marqueePaused = false;
+    }
+
     event.stopPropagation();
 }
 

@@ -1,0 +1,40 @@
+﻿
+
+#titleImage {
+    position: relative;
+    width: 250px;
+    height: 100px;
+
+    margin: auto;
+}
+
+#instructions {
+    position: relative;
+    width: 250px;
+    height: 100px;
+    
+    margin: auto;
+}
+
+#searchFieldDiv {
+    position: relative;
+    width: 250px;
+    margin: auto;
+}
+
+#StartSearchButtonDiv {
+    position: relative;
+    width: 250px;
+
+    margin: auto;
+}
+
+#resultView {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    
+    margin: auto;
+
+    
+}

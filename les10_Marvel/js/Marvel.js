@@ -5,8 +5,9 @@ var privateKey = "0e5ad3fccc4b1bc7d38503cb752aabf7";
 
 var searchField;
 var StartSearchButton;
+var nameListbox;
 
-
+// "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&apikey=0e5ad3fccc4b1bc7d38503cb752aabf7"
 
 // get comics from character ID
 // https://gateway.marvel.com:443/v1/public/characters/1009610/comics?format=comic&formatType=comic&limit=20&apikey=0e5ad3fccc4b1bc7d38503cb752aabf7
@@ -29,7 +30,7 @@ function $http(url) {
                 var client = new XMLHttpRequest();
                 var uri = url;
 
-                if (args && (method === 'POST' || method === 'PUT')) {
+                if (args && (method === 'POST' || method === 'PUT' || method === 'GET')) {
                     uri += '?';
                     var argcount = 0;
                     for (var key in args) {
@@ -85,47 +86,62 @@ function $http(url) {
 };
 // End A
 
-// B-> Here you define its functions and its payload
-var payload = {
-    'topic': 'js',
-    'q': 'Promise'
-};
 
-var callback = {
-    success: function (data) {
-        var pre = document.createElement('PRE');
-        var t = document.createTextNode(data);
-        pre.appendChild(t);
-        document.body.appendChild(pre);
-    },
-    error: function (data) {
-        var pre = document.createElement('PRE');
-        var t = document.createTextNode('<b>' + 2 + '</b> error ' + data);
-        pre.appendChild(t);
-        document.body.appendChild(pre);
-    }
-};
-// End B
 
 
 
 function performSearch() {
     console.log("searching");
 
+    var payload = {
+        nameStartsWith: searchField.value,
+        apikey: "0e5ad3fccc4b1bc7d38503cb752aabf7"
+    };
+
+    var callback = {
+        success: function (data) {
+            
+            removeOptions(nameListbox);
+
+            // TODO store ID from data.results.
+
+            var characters = JSON.parse(data).data.results;
+            characters.map(function (character) {
+                var option = document.createElement("option");
+                option.text = character.name;
+                nameListbox.add(option);
+            });
+
+        },
+        error: function (data) {
+            
+            removeOptions(nameListbox);
+
+            var pre = document.createElement('PRE');
+            var t = document.createTextNode('<b>' + 2 + '</b> error ' + data);
+            pre.appendChild(t);
+            document.body.appendChild(pre);
+        }
+    };
+
+
+
+//    var API_GetCharacterURL = "https://gateway.marvel.com:443/v1/public/characters";
+//    var API_ParameterSearch = "nameStartsWith";
+ //   var API_ParameterKey = "apikey";
+ //   var privateKey = "0e5ad3fccc4b1bc7d38503cb752aabf7";
+
+
     // Executes the method call
-    /*
-    $http('data/procedureList.json')
+    
+    $http(API_GetCharacterURL)
         .get(payload)
         .then(function (data) {
             callback.success(data);
-            return $http('data/organisationList.json').get(payload);
-        })
-        .catch(callback.error)
-        .then(function (data) {
-            callback.success(data);
+            return ;
         })
         .catch(callback.error);
-    */
+    
 
 
 }
@@ -151,5 +167,16 @@ window.onload = function () {
 
     StartSearchButton.addEventListener("click", performSearch, false);
 
-    
+    nameListbox = document.getElementById("nameList");
+
+    // TODO add selection changed event listener to nameListbox, retrieve selected character.
+}
+
+
+
+function removeOptions(selectbox) {
+    var i;
+    for (i = selectbox.options.length - 1; i >= 0; i--) {
+        selectbox.remove(i);
+    }
 }

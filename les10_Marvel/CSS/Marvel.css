@@ -2,42 +2,47 @@
 
 #titleImageDiv {
     position: relative;
-    width: 250px;
-    height: 100px;
+    width: 400px;
+    height: 200px;
 
     margin: auto;
 }
 
-#instructionsDiv {
-    position: relative;
-    width: 250px;
-    height: 100px;
-    
-    margin: auto;
+#imageLogo {
+    width: 400px;
+    height: 161px;
 }
+
+
 
 #searchFieldDiv {
     position: relative;
     width: 250px;
     margin: auto;
+    padding: 10px 50px 10px 50px;
+    text-align: center;
 }
 
 #StartSearchButtonDiv {
     position: relative;
     width: 250px;
-
     margin: auto;
+    display: block;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
 }
 
 #nameListDiv {
     position: relative;
     width: 250px;
     margin: auto;
+    text-align: center;
 }
 
 #resultViewDiv {
     position: relative;
-    width: 250px;
+    width: 500px;
     height: 200px;
     margin: auto;
+    
 }

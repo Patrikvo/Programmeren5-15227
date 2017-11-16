@@ -3,6 +3,11 @@
 var publicKey = "0e5ad3fccc4b1bc7d38503cb752aabf7";
 var privateKey = "864250762f47a2c880c5243d977bcc728c8afa4f";
 
+var comicNameListElement = 'resultViewDiv';
+var searchfieldElement = 'searchField';
+var startSeachButton = "buttonStartSearch";
+var characterNameListElement = "nameList";
+
 var maxResults = 99;
 
 var searchField;
@@ -103,7 +108,7 @@ function performQuery(URL, payload, callback) {
 // ---------------
 
 function performSearchCharacters() {
-	// search all characters who names start with the string retrieved from the searchfield.
+	// search all characters whose names start with the string retrieved from the searchfield.
 	
     var timeStamp = getTimeStamp();
 
@@ -138,11 +143,11 @@ function performSearchCharacters() {
             removeOptions(nameListbox);
 
             // remove previous results
-            document.getElementById('resultViewDiv').innerHTML = "";
+            document.getElementById(comicNameListElement).innerHTML = "";
 
             var errorMessage = document.createTextNode('<b>' + 2 + '</b> error ' + data);
 
-            document.getElementById('resultViewDiv').appendChild(errorMessage);
+            document.getElementById(comicNameListElement).appendChild(errorMessage);
         }
     };
 
@@ -182,10 +187,8 @@ function listboxSelectionChanged() {
 			// create a list of the received comics
 
             var list = document.createElement('ul');
-            list.id = "comicList";
 
             var comics = JSON.parse(data).data.results;
-            
 
             comics.map(function (comic) {
 				// create a list item from each of the comics.
@@ -198,19 +201,17 @@ function listboxSelectionChanged() {
             });
 
             // remove previous results
-            document.getElementById('resultViewDiv').innerHTML = "";
+            document.getElementById(comicNameListElement).innerHTML = "";
 
-            document.getElementById('resultViewDiv').appendChild(list);
-
-            
+            document.getElementById(comicNameListElement).appendChild(list);
         },
         error: function (data) {
            // remove previous results and show an error message.
 		   
-            document.getElementById('resultViewDiv').innerHTML = "";
+            document.getElementById(comicNameListElement).innerHTML = "";
 
             var errorMessage = document.createTextNode('<b>' + 2 + '</b> error ' + data);
-            document.getElementById('resultViewDiv').appendChild(errorMessage);
+            document.getElementById(comicNameListElement).appendChild(errorMessage);
         }
     };
 
@@ -219,14 +220,14 @@ function listboxSelectionChanged() {
 
 window.onload = function () {
 	//retrieve the controls and add the event handlers.
-    searchField = document.getElementById("searchField");
+    searchField = document.getElementById(searchfieldElement);
 	searchField.addEventListener("input", searchTextChanged, false);
 	
-    StartSearchButton = document.getElementById("buttonStartSearch");
+    StartSearchButton = document.getElementById(startSeachButton);
     StartSearchButton.disabled = true;
     StartSearchButton.addEventListener("click", performSearchCharacters, false);
 
-    nameListbox = document.getElementById("nameList");
+    nameListbox = document.getElementById(characterNameListElement);
 }
 
 

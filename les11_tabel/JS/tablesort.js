@@ -10,8 +10,13 @@ Werk de TableSort klasse af (je mag de prototype based manier gebruiken of de ni
     de commit: "TableSort Opdracht Final".
 */
 
-
+	var upArrow = '\u2191';
+	var downArrow = '\u2193';
 class TableSort {
+
+	
+	
+	
     constructor(id) {
         // When calling an object constructor or any of its methods,
         // this’ refers to the instance of the object
@@ -27,7 +32,8 @@ class TableSort {
         var headings = this.tableElement.tHead.rows[0].cells;
         // headings is een htmlcollection
         for (let i = 0; i < headings.length; i++) {
-            headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;&uarr;</span>';
+            //headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;&uarr;</span>';
+			headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;' + upArrow + '</span>';
             headings[i].className = 'asc';
         }
         this.tableElement.addEventListener("click", function (that) {
@@ -91,19 +97,19 @@ class TableSort {
         if (event.target.tagName === 'TH') {
             // alert('kolomkop');
 
-            this.sortColumn(event.target);
-        }
-        else if (event.target.tagName === 'SPAN') {
-            if (event.target.parentNode.tagName === 'TH') {
-                if (event.target.parentNode.className == "asc") {
-                    event.target.parentNode.className = 'desc';
-                    event.target.innerHTML = "&nbsp;&nbsp;&darr;"
+			
+                if (event.target.className == "asc") {
+                    event.target.className = 'desc';
+                    //event.target.innerHTML =  event.target.innerHTML.replace('&uarr;', '&darr;');
+					event.target.innerHTML =  event.target.innerHTML.replace(upArrow, downArrow);
                 }
                 else {
-                    event.target.parentNode.className = 'asc';
-                    event.target.innerHTML = "&nbsp;&nbsp;&uarr;"
+                    event.target.className = 'asc';
+                    //event.target.innerHTML =  event.target.innerHTML.replace('&darr;', '&uarr;');
+					event.target.innerHTML =  event.target.innerHTML.replace(downArrow,upArrow);
                 };
-            }
+		
+            this.sortColumn(event.target);
         }
     }
 }

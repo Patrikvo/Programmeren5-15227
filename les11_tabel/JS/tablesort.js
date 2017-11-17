@@ -32,7 +32,6 @@ class TableSort {
         var headings = this.tableElement.tHead.rows[0].cells;
         // headings is een htmlcollection
         for (let i = 0; i < headings.length; i++) {
-            //headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;&uarr;</span>';
 			headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;' + upArrow + '</span>';
             headings[i].className = 'asc';
         }
@@ -70,22 +69,43 @@ class TableSort {
         }
         // Sort according to direction (ascending or descending)
         let orderdedColumns = [];
-        numeric.sort(function (a, b) {
-            return a.value - b.value;
-        });
-        alpha.sort(function (a, b) {
-            let aName = a.value.toLowerCase();
-            let bName = b.value.toLowerCase();
-            if (aName < bName) {
-                return -1
-            }
-            else if (aName > bName) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        });
+		if (headerCell.className == "asc" ){
+			numeric.sort(function (a, b) {
+				return a.value - b.value;
+			});
+		
+			alpha.sort(function (a, b) {
+				let aName = a.value.toLowerCase();
+				let bName = b.value.toLowerCase();
+				if (aName < bName) {
+					return -1
+				}
+				else if (aName > bName) {
+					return 1;
+				}
+				else {
+					return 0;
+				}
+			});
+		}else {
+			numeric.sort(function (b, a) {
+				return a.value - b.value;
+			});
+		
+			alpha.sort(function (b, a) {
+				let aName = a.value.toLowerCase();
+				let bName = b.value.toLowerCase();
+				if (aName < bName) {
+					return -1
+				}
+				else if (aName > bName) {
+					return 1;
+				}
+				else {
+					return 0;
+				}
+			});
+		}
         // Reorder HTML table based on new order of data found in the col array
         orderdedColumns = numeric.concat(alpha);
         let tBody = this.tableElement.tBodies[0];
@@ -100,12 +120,10 @@ class TableSort {
 			
                 if (event.target.className == "asc") {
                     event.target.className = 'desc';
-                    //event.target.innerHTML =  event.target.innerHTML.replace('&uarr;', '&darr;');
 					event.target.innerHTML =  event.target.innerHTML.replace(upArrow, downArrow);
                 }
                 else {
                     event.target.className = 'asc';
-                    //event.target.innerHTML =  event.target.innerHTML.replace('&darr;', '&uarr;');
 					event.target.innerHTML =  event.target.innerHTML.replace(downArrow,upArrow);
                 };
 		

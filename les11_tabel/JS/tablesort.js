@@ -35,12 +35,15 @@ class TableSort {
 			headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;' + upArrow + '</span>';
             headings[i].className = 'asc';
         }
+		
+		
+		
         this.tableElement.addEventListener("click", function (that) {
-            return function () {
-                that.eventHandler(event);
+            return function (event) {
+				that.eventHandler(event);
                 return false;
             }
-        }(this), false);
+        }(this), false); 
     }
     sortColumn(headerCell) {
         // Get cell data for column that is to be sorted from HTML table
@@ -113,10 +116,9 @@ class TableSort {
             tBody.appendChild(orderdedColumns[i].row);
         }
     }
-    eventHandler() {
-        if (event.target.tagName === 'TH') {
-            // alert('kolomkop');
+    eventHandler(event) {
 
+        if (event.target.tagName === 'TH') {
 			
                 if (event.target.className == "asc") {
                     event.target.className = 'desc';
@@ -130,6 +132,7 @@ class TableSort {
             this.sortColumn(event.target);
         }
     }
+
 }
 
 

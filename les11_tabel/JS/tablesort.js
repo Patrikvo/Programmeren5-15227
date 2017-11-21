@@ -1,42 +1,34 @@
-﻿/*
+﻿
+// Constants
 
-Werk de TableSort klasse af (je mag de prototype based manier gebruiken of de nieuwe class-syntaxis of beiden):
+// codes for both arrows.
+const UP_ARROW = '\u2191';
+const DOWN_ARROW = '\u2193';
+const ASCENDING = "asc";
+const DECENDING = "desc";
 
-    bij het opstarten staan de wijzen de pijltjes in de kolommen naar boven;
-    als de gebruiker op een kolomkop klikt:
-        worden de rijen geordend in de volgorde die door het pijltje wordt aangegeven
-        verandert het pijltje van richting
 
-    de commit: "TableSort Opdracht Final".
-*/
-
-	var upArrow = '\u2191';
-	var downArrow = '\u2193';
 class TableSort {
-
-	
-	
 	
     constructor(id) {
-        // When calling an object constructor or any of its methods,
-        // this’ refers to the instance of the object
-        // much like any class-based language
+        // id should refere to the id of a table.
+		
         this.tableElement = document.getElementById(id);
         if (this.tableElement && this.tableElement.nodeName == "TABLE") {
             this.prepare();
         }
     }
+
     prepare() {
-        // add arrow up
+		// Add arrows to headers and add evenListener.
+
         // default is ascending order
         var headings = this.tableElement.tHead.rows[0].cells;
         // headings is een htmlcollection
         for (let i = 0; i < headings.length; i++) {
-			headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;' + upArrow + '</span>';
-            headings[i].className = 'asc';
+			headings[i].innerHTML = headings[i].innerHTML + '<span>&nbsp;&nbsp;' + UP_ARROW + '</span>';
+            headings[i].className = ASCENDING; 
         }
-		
-		
 		
         this.tableElement.addEventListener("click", function (that) {
             return function (event) {
@@ -45,11 +37,14 @@ class TableSort {
             }
         }(this), false); 
     }
+
     sortColumn(headerCell) {
         // Get cell data for column that is to be sorted from HTML table
         let rows = this.tableElement.rows;
         let alpha = [],
             numeric = [];
+		alpha.alphaSort = this.alphaSort;	
+		numeric.numericSort = this.numericSort;
         let alphaIndex = 0,
             numericIndex = 0;
         let cellIndex = headerCell.cellIndex;
@@ -72,43 +67,14 @@ class TableSort {
         }
         // Sort according to direction (ascending or descending)
         let orderdedColumns = [];
-		if (headerCell.className == "asc" ){
-			numeric.sort(function (a, b) {
-				return a.value - b.value;
-			});
-		
-			alpha.sort(function (a, b) {
-				let aName = a.value.toLowerCase();
-				let bName = b.value.toLowerCase();
-				if (aName < bName) {
-					return -1
-				}
-				else if (aName > bName) {
-					return 1;
-				}
-				else {
-					return 0;
-				}
-			});
+		if (headerCell.className == ASCENDING ) { 
+			numeric.sort(function (a, b) { return numeric.numericSort(a,b, false); });
+            alpha.sort(function (a, b) { return alpha.alphaSort(a, b, false); });
 		}else {
-			numeric.sort(function (b, a) {
-				return a.value - b.value;
-			});
-		
-			alpha.sort(function (b, a) {
-				let aName = a.value.toLowerCase();
-				let bName = b.value.toLowerCase();
-				if (aName < bName) {
-					return -1
-				}
-				else if (aName > bName) {
-					return 1;
-				}
-				else {
-					return 0;
-				}
-			});
-		}
+			numeric.sort(function (a, b) { return numeric.numericSort(a,b, true); });
+            alpha.sort(function (a, b) { return alpha.alphaSort(a, b, true); });
+        }
+
         // Reorder HTML table based on new order of data found in the col array
         orderdedColumns = numeric.concat(alpha);
         let tBody = this.tableElement.tBodies[0];
@@ -116,17 +82,53 @@ class TableSort {
             tBody.appendChild(orderdedColumns[i].row);
         }
     }
+
+	// return the relative order of the two input strings. If invert is 'true', then the order is inverted.
+    alphaSort(a, b, invert) {
+        let aName = a.value.toLowerCase();
+        let bName = b.value.toLowerCase();
+
+        var result;
+        if (aName < bName) {
+            result = -1;
+        }
+        else if (aName > bName) {
+            result = 1;
+        }
+        else {
+            result = 0;
+        }
+        if (invert == true) {
+            result = -result;
+        }
+        return result;
+    }
+
+	// return the relative order of the two input numeric values. If invert is 'true', then the order is inverted.
+	numericSort(a, b, invert) {
+		if (invert){
+			return b.value - a.value;
+		}
+		else{
+			return a.value - b.value;
+		}
+	}
+
+
+
+
     eventHandler(event) {
+		// switch up/down arrow and re-sort table.
 
         if (event.target.tagName === 'TH') {
 			
-                if (event.target.className == "asc") {
-                    event.target.className = 'desc';
-					event.target.innerHTML =  event.target.innerHTML.replace(upArrow, downArrow);
+                if (event.target.className == ASCENDING)  {  
+                    event.target.className = DECENDING; 
+					event.target.innerHTML =  event.target.innerHTML.replace(UP_ARROW, DOWN_ARROW);
                 }
                 else {
-                    event.target.className = 'asc';
-					event.target.innerHTML =  event.target.innerHTML.replace(downArrow,upArrow);
+                    event.target.className = ASCENDING; 
+					event.target.innerHTML =  event.target.innerHTML.replace(DOWN_ARROW,UP_ARROW);
                 };
 		
             this.sortColumn(event.target);
@@ -139,9 +141,4 @@ class TableSort {
 window.onload = function () {
     var jommeke = new TableSort("jommeke");
     var fruit = new TableSort("fruit");
-
-    
-
-
-
 }

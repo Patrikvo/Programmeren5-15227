@@ -47,18 +47,24 @@ function initAuth() {
         // Listen for sign-in state changes.
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
         }).then(handleInitialSignInStatus)
-        .then(makePeopleApiCall)
-        .then(showUserProfile);
+       // .then(makePeopleApiCall)
+      //  .then(showUserProfile);
 }
 
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         signinButton.style.display = 'none';
         signoutButton.style.display = 'block';
+
+        makePeopleApiCall();
+        showUserProfile();
     }
     else {
         signinButton.style.display = 'block';
         signoutButton.style.display = 'none';
+
+        document.getElementById('content').innerHTML = "";
+        document.getElementById('raw').innerHTML = "";
     }
 }
 
@@ -74,7 +80,7 @@ function signOut(event) {
 function initialiseGUI() {
     signinButton = document.getElementById('signin-button');
     signoutButton = document.getElementById('signout-button');
-    signinButton.style.display = 'none';
+    signinButton.style.display = 'block';
     signoutButton.style.display = 'none';
 
     signinButton.addEventListener("click", signIn);
@@ -112,6 +118,9 @@ function makePeopleApiCall() {
     });
 }
 function showUserProfile(resp) {
+    document.getElementById('content').innerHTML = "";
+
+
     // Note: In this example, we use the People API to get the current
     // user's name. In a real app, you would likely get basic profile info
     // from the GoogleUser object to avoid the extra network round trip.

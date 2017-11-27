@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Google API</title>
+    <link rel="stylesheet" href="CSS/vos.css">
 </head>
 <body>
-    <button id="signin-button" >Aanmelden</button>
+    <button id="signin-button">Aanmelden</button>
     <button id="signout-button">Afmelden</button>
-	
-    <div id="content"></div>
-    <br />
-    <br />
-    <br />
+
+    <div id="outer">
+        <div id="image"></div>
+        <div id="profile">
+            <div id="name"></div>
+            <div id="gender"></div>
+            <div id="birthday"></div>
+        </div>
+
+        <div id="supplement">
+            <div id="email"></div>
+            <div id="userID"></div>
+        </div>
+    </div>
+
+
     <div id="raw"></div>
-	<script type="text/javascript" src="js/google-oauth-api.js"></script>
+
+    <script type="text/javascript" src="js/google-oauth-api.js"></script>
     <script src="https://apis.google.com/js/api.js?onload=loadAuthClient"></script>
 </body>
 </html>

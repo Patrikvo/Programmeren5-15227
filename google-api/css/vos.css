@@ -1,0 +1,31 @@
+
+#outer {
+    padding-top:20px;
+    display: flex;
+    flex-direction: row;
+    align-content:space-between;
+}
+
+#supplement {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left:40px;
+}
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 30px;
+}
+
+#image {
+    float: left;
+}
+
+
+#raw{
+    /* set to block to show debug information. */
+    display:none;
+}

@@ -1,11 +1,14 @@
-var apiKey = 'AIzaSyCoSQlS5VFZDN6dr7SczR83dFEahbvZQzE';
 var clientId = '566797757019-n7knnllfprnuqr3tmvo654jvddq9qf7t.apps.googleusercontent.com';
 var scope = 'profile https://www.googleapis.com/auth/user.birthday.read';
 var signinButton;
 var signoutButton;
 
 
-
+/**
+ * Handle the loading of the Google API.
+ * This method is called by the apis.google.com/js/api.js
+ * when the HTML page is loaded.
+ */
 function loadAuthClient() {
     initialiseGUI();
 
@@ -28,20 +31,12 @@ function loadAuthClient() {
     });
 }
 
+
 /**
- * Handle the initial sign-in state.
- * This method is called by the OAuth initAuth method and is
- * called once the user is signed in succesfully
+ * Handle the initialisation of OAuth2.
+ * 
  */
-function handleInitialSignInStatus() {
-    updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-}
-
-
-
-
 function initAuth() {
-
     gapi.auth2.init({
         client_id: clientId,
         scope: scope,
@@ -52,9 +47,23 @@ function initAuth() {
 }
 
 
+/**
+ * Handle the initial sign-in state.
+ * This method is called by the OAuth initAuth method and is
+ * called once the user is signed in succesfully
+ */
+function handleInitialSignInStatus() {
+    updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+}
 
+
+/**
+ * Handle the actions after signing in or out.
+ * 
+ */
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
+		// hide sign-in button and show sign-out button.
         signinButton.style.display = 'none';
         signoutButton.style.display = 'block';
 
@@ -63,32 +72,45 @@ function updateSigninStatus(isSignedIn) {
         
     }
     else {
+		// hide sign-out button and show sign-in button.
         signinButton.style.display = 'block';
         signoutButton.style.display = 'none';
 
-        
-
+		// clear all displayed data when the user logs out.
         document.getElementById("name").innerHTML = "";
         document.getElementById("gender").innerHTML = "";
         document.getElementById("birthday").innerHTML = "";
         document.getElementById("userID").innerHTML = "";
         document.getElementById("email").innerHTML = "";
         document.getElementById("image").innerHTML = "";
-
-
+		
         document.getElementById('raw').innerHTML = "";
     }
 }
 
+
+/**
+ * sign-in event handler
+ * 
+ */
 function signIn(event) {
     gapi.auth2.getAuthInstance().signIn();
 }
 
+
+/**
+ * sign-out event handler
+ * 
+ */
 function signOut(event) {
     gapi.auth2.getAuthInstance().signOut();
 }
 
 
+/**
+ * Prepares the GUI component for use.
+ * 
+ */
 function initialiseGUI() {
     signinButton = document.getElementById('signin-button');
     signoutButton = document.getElementById('signout-button');
@@ -100,30 +122,35 @@ function initialiseGUI() {
 }
 
 
-
-
-
+/**
+ * Calls the Google People API for the logged in user
+ * and retrieve the requested field.
+ */
 function makePeopleApiCall() {
     gapi.client.load('people', 'v1', function () {
         var request = gapi.client.people.people.get({
-            resourceName: 'people/me',
-            personFields: 'names,birthdays,genders'
+            resourceName: 'people/me',					// who to request for ('me' is the logged in user.)
+            personFields: 'names,birthdays,genders'		// which fields to retrieve. 
         });
         request.execute(function (resp) {
-            showPeopleAPIProfile(resp);
+			// show the retrieved field on the page.
+            showPeopleAPIProfile(resp);				
 
 
-
-            // Toon het response object als JSON string
+            // show the response object as JSON string for debug purposes. This document element is normaly hidden using CSS.
             var pre = document.createElement('pre');
             var feedback = JSON.stringify(resp, null, 4);
             pre.appendChild(document.createTextNode(feedback));
             document.getElementById('raw').appendChild(pre);
-
         });
     });
 }
 
+
+/**
+ * Show the retrieved field of the response object on the page.
+ * 
+ */
 function showPeopleAPIProfile(response) {
     var name = response.names[0].displayName;
     var nameDiv = document.getElementById("name");
@@ -142,14 +169,12 @@ function showPeopleAPIProfile(response) {
 }
 
 
-
-
-
-
+/**
+ * Show the basic user fields on the page.
+ * 'Name' is displayed using the People API call.
+ */
 function showUserProfile(resp) {
-    // Note: In this example, we use the People API to get the current
-    // user's name. In a real app, you would likely get basic profile info
-    // from the GoogleUser object to avoid the extra network round trip.
+
     var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
 
     var userIDDiv = document.getElementById("userID");
@@ -165,5 +190,4 @@ function showUserProfile(resp) {
     var emailDiv = document.getElementById("email");
     emailDiv.innerHTML = "";
     emailDiv.appendChild(document.createTextNode("Email: " + profile.getEmail()));
-    
 }

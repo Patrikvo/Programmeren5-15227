@@ -11,6 +11,26 @@
 .vs
 *.sln
 
+# Cordova bestanden
+vos/.npmignore
+vos/config.xml
+vos/hooks/
+vos/node_modules/
+vos/package-lock.json
+vos/package.json
+vos/platforms
+vos/plugins
+vos/res/README.md
+vos/res/screen
+vos/res/icon/bada
+vos/res/icon/bada-wac
+vos/res/icon/blackberry
+vos/res/icon/blackberry10
+vos/res/icon/ios
+vos/res/icon/tizen
+vos/res/icon/webos
+vos/res/icon/windows-phone
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

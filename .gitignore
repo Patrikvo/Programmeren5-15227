@@ -10,26 +10,27 @@
 *.sln.docstates
 .vs
 *.sln
+*.config
 
 # Cordova bestanden
-vos/.npmignore
-vos/config.xml
-vos/hooks/
-vos/node_modules/
-vos/package-lock.json
-vos/package.json
-vos/platforms
-vos/plugins
-vos/res/README.md
-vos/res/screen
-vos/res/icon/bada
-vos/res/icon/bada-wac
-vos/res/icon/blackberry
-vos/res/icon/blackberry10
-vos/res/icon/ios
-vos/res/icon/tizen
-vos/res/icon/webos
-vos/res/icon/windows-phone
+cordova/vos/.npmignore
+cordova/vos/config.xml
+cordova/vos/hooks/
+cordova/vos/node_modules/
+cordova/vos/package-lock.json
+cordova/vos/package.json
+cordova/vos/platforms/
+cordova/vos/plugins/
+cordova/vos/res/README.md
+cordova/vos/res/screen/
+cordova/vos/res/icon/bada
+cordova/vos/res/icon/bada-wac
+cordova/vos/res/icon/blackberry
+cordova/vos/res/icon/blackberry10
+cordova/vos/res/icon/ios
+cordova/vos/res/icon/tizen
+cordova/vos/res/icon/webos
+cordova/vos/res/icon/windows-phone
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

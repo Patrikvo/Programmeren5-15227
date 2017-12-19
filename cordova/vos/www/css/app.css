@@ -1,0 +1,243 @@
+/* Cordova settings */
+.feedback {
+    display: none;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+/* following two viewport lines are equivalent to the meta viewport statement above, needed for Windows */
+/* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+@-ms-viewport {
+    width: 100vw ;
+    zoom: 100% ;
+    user-zoom: fixed ;
+}
+
+@viewport {
+    width: 100vw ;
+    zoom: 100% ;
+    user-zoom: fixed ;
+}
+
+/* ---------- start app css --------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 0.9em;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+/* --------------- tower ---------------- */
+
+#tower {
+    height: 100%;
+    width: 100%;
+    display: block; /* wordt geactiveeerd do ondevice ready */
+}
+
+#tower:target {
+    display: block;
+}
+
+/* --------------- floor -------------- */
+
+.floor {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.floor:target {
+    display: block;
+}
+
+/* --------- floor front -------------- */
+
+.floor .front {
+    height: 11%;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 0 2% 0 2%;
+    margin-bottom: 2%;
+}
+/* ------------ front banner -------------- */
+.front h1 {
+    font-size: 4vh;
+    font-weight: 900;
+    color: rgb(195, 0, 74);
+    float: right;
+    text-align: right;
+    width: 70%;
+    display: inline-block;
+}
+
+.front h1 span {
+    color: rgb(200, 200, 200);
+}
+
+/* --------- floor control-panel --------- */
+.front .control-panel {
+    height: 100%;
+    width: 30%;
+    float: left;
+    display: inline-block;
+}
+
+/*
+    controle paneel icoon tegel
+    opmerking: Viewport-percentage lengths: the ‘vw’, ‘vh’, ‘vmin’, ‘vmax’ units
+    The viewport-percentage lengths are relative to the size of the initial containing block.
+    When the height or width of the initial containing block is changed,
+    they are scaled accordingly.
+    However, when the value of ‘overflow’ on the root element is ‘auto’,
+    any scroll bars are assumed not to exist.
+    Bron: http://www.w3.org/TR/css3-values/#viewport-relative-lengths
+*/
+.front .control-panel .tile {
+    position: relative; /* masker is absoluut geplaatst hierop*/
+    float: left; /* tegels naast en onder elkaar */
+    overflow: hidden;
+    cursor: pointer;
+    color: #000;
+    background-color: #fff;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 6vh;
+
+    /* 14 tegels per rij, één rij */
+    width: 10%;
+    height: 100%;
+    min-width: 1.2em;
+    min-height: 1.2em;
+    /*font-size: 3.5vw;*/
+}
+
+/* standaard hover kan overschreven worden door ander schema */
+.front .control-panel .tile:hover {
+    color: rgb(226, 69, 16);
+    cursor: pointer;
+}
+
+.front .control-panel a {
+    text-decoration: none;
+}
+
+/* ------------- show-room -------------- */
+
+.show-room {
+    height: 80%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.show-room.index > .tile {
+    background: rgb(0, 179, 213);
+    border-radius: 2em 0 2em 0;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    color: black;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+}
+
+.show-room.index > .tile h1 {
+    margin-top: 0.4em;
+    color: rgb(240, 239, 228);
+}
+
+.show-room.index > .tile [class^="icon-"] {
+    font-size: 8em;
+    color: rgb(240, 239, 228);
+    background-color: transparent;
+    text-shadow: 2px 2px black;
+}
+
+.show-room.index > .tile:hover [class^="icon-"],
+.show-room.index > .tile:hover h1 {
+    color: rgb(226, 69, 16);
+    cursor: pointer;
+}
+
+/* GO! lichtgrijs */
+.show-room.index > .tile:nth-child(4n + 1) {
+    background: rgba(0, 178, 213, 0.90);
+}
+
+/* GO! blauw */
+.show-room.index > .tile:nth-child(4n + 2) {
+    background: rgba(195, 0, 74, 0.9);
+}
+
+/* GO! groen */
+.show-room.index > .tile:nth-child(4n + 3) {
+    background: rgba(169, 185, 5, 0.9);
+}
+
+/* Go! magenta */
+.show-room.index > .tile:nth-child(4n + 4) {
+    background: rgba(240, 136, 0, 0.9);
+}
+
+/* GO! beige voor identity tile*/
+.show-room.index .tile.identity {
+    background: rgba(240, 239, 228, 0.9);
+}
+
+@media (orientation: portrait) {
+    .show-room.index > .tile {
+        width: 96%;
+        height: 36%;
+    }
+
+
+}
+
+@media (orientation: landscape) {
+    .show-room.index > .tile {
+        width: 44%;
+        height: 65%;
+    }
+}
+
+/* accessability */
+.screen-reader-text {
+    /* Reusable, toolbox kind of class
+        voor screen readers, op die manier
+        kunnen de readers lezen waarvoor
+        de knop staat; de tekst is zelf
+        niet zichtbaar op het scherm door negatieve
+        waarden toe te kennen aan top en left */
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}

@@ -44,3 +44,7 @@ var app = {
 };
 
 app.initialize();
+
+window.onload = function(){
+    location.href= "#home-index";
+}

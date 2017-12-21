@@ -1,0 +1,478 @@
+[
+  {
+    "name": "Atheneum Irishof Campus Kapellen",
+    "street": "Streepstraat 16",
+    "postalcode": "2950",
+    "city": " Kapellen",
+    "email": "ka.kapellen@g-o.be",
+    "phone": "03 660 13 00",
+    "directie": {
+      "firstName": "Brigitta",
+      "lastName": "Verlent",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.31974150000001",
+    "longitude": "4.424790499999972",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Atheneum Irishof Campus Kalmthout",
+    "street": "Ganzendries 14",
+    "postalcode": "2920",
+    "city": " Kalmthout",
+    "email": "ka.kapellen@g-o.be",
+    "phone": "03 666 89 15",
+    "directie": {
+      "firstName": "Brigitta",
+      "lastName": "Verlent",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.37707839999999",
+    "longitude": "4.470896499999981",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Middenschool Irishof",
+    "street": "Streepstraat 16",
+    "postalcode": "2950",
+    "city": "Kapellen",
+    "email": "ms.kapellen@g-o.be",
+    "phone": "03 660 13 00",
+    "directie": {
+      "firstName": "Roel",
+      "lastName": "Gheyle",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.31974150000001",
+    "longitude": "4.424790499999972"  },
+  {
+    "name": "Kunsthumaniora van het GO! Campus Harmonie",
+    "street": "Karel Oomstraat 24",
+    "postalcode": "2018",
+    "city": "Antwerpen",
+    "email": "kunsthumaniora@telenet.be",
+    "phone": "03 216 02 36",
+    "directie": {
+      "firstName": "Luc",
+      "lastName": " Van Praet",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.1964568",
+    "longitude": "4.409540800000059"  },
+  {
+    "name": "Kunsthumaniora van het GO! Campus Ieperman:",
+    "street": "Kerkelei 43",
+    "postalcode": "2610",
+    "city": "Wilrijk",
+    "email": "kunsthumaniora@telenet.be",
+    "phone": "03 216 02 36",
+    "directie": {
+      "firstName": "Luc",
+      "lastName": " Van Praet",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.1685824",
+    "longitude": "4.3995956999999635",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "De Scheepvaartschool - Cenflumarin",
+    "street": "Gloriantlaan 75",
+    "postalcode": "2050",
+    "city": " Antwerpen",
+    "email": "secretariaat@descheepvaartschool.be",
+    "phone": "03 570 97 30",
+    "directie": {
+      "firstName": "Roel",
+      "lastName": " Buisseret",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.22555089999999",
+    "longitude": "4.387087000000065",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Erasmusatheneum Essen-Kalmthout Campus Kalmthout",
+    "street": "Ganzendries 14",
+    "postalcode": "2920",
+    "city": " Kalmthout",
+    "email": "ms.essen@g-o.be",
+    "phone": "03 667 25 64",
+    "directie": {
+      "firstName": "Wendy",
+      "lastName": " Van den Branden",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.3773771",
+    "longitude": "4.47073869999997",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Erasmusatheneum Essen-Kalmthout Campus Essen",
+    "street": "Hofstraat 14",
+    "postalcode": "2910",
+    "city": "Essen",
+    "email": "ms.essen@g-o.be",
+    "phone": "03 667 25 64",
+    "directie": {
+      "firstName": "Wendy",
+      "lastName": " Van den Branden",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.4655301",
+    "longitude": "4.468597100000011",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Koninklijk Atheneum Antwerpen",
+    "street": "Fr. Rooseveltplaats 11",
+    "postalcode": "2060",
+    "city": "Antwerpen",
+    "email": "ka1.antwerpen@g-o.be",
+    "phone": "03 232 70 99",
+    "directie": {
+      "firstName": "Karin",
+      "lastName": "Heremans",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2195145",
+    "longitude": "4.417851199999973",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Koninklijk Atheneum Berchem",
+    "street": "Uitbreidingstraat 246",
+    "postalcode": "2600",
+    "city": " Berchem",
+    "email": "directie.kaberchem@antigon.be",
+    "phone": "03239 00 23",
+    "directie": {
+      "firstName": "Inge",
+      "lastName": " Verhiest",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.1940403",
+    "longitude": "4.422376299999996",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Koninklijk Atheneum Deurne",
+    "street": "Frank Craeybeckxlaan 22",
+    "postalcode": "2100",
+    "city": "Deurne",
+    "email": "ka.deurne@g-o.be",
+    "phone": "03 328 18 40",
+    "directie": {
+      "firstName": "Dirk",
+      "lastName": " Boeye",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2216359",
+    "longitude": "4.459588599999961",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Koninklijk Atheneum Hoboken",
+    "street": "Distelvinklaan 22",
+    "postalcode": "2660",
+    "city": " Hoboken",
+    "email": "atheneum.hoboken@g-o.be",
+    "phone": "03 827 27 99",
+    "directie": {
+      "firstName": "Micheline",
+      "lastName": "Warmenbol",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.1698497",
+    "longitude": "4.361586699999975",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Koninklijk Atheneum Hoboken Noord",
+    "street": "Hendriklei 67",
+    "postalcode": "2660",
+    "city": "Hoboken",
+    "email": "atheneum.hoboken@g-o.be",
+    "phone": "03 828 62 26",
+    "directie": {
+      "firstName": "Micheline",
+      "lastName": " Warmenbol",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.18814099999999",
+    "longitude": "4.372773100000018",
+	"distanceFromMyLocation" : 0
+  },
+  {  
+    "name": "Koninklijk Atheneum MXM",
+    "street": "Melgesdreef 113",
+    "postalcode": "2170",
+    "city": "Merksem",
+    "email": "info@kamerksem.be",
+    "phone": "03 645 75 68",
+    "directie": {
+      "firstName": "Eddy",
+      "lastName": " Marchand",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2560402",
+    "longitude": "4.455210399999942",
+	"distanceFromMyLocation" : 0
+  },
+  {  
+    "name": "Koninklijk Lyceum Antwerpen",
+    "street": "Hertoginstraat 17",
+    "postalcode": "2018",
+    "city": "Antwerpen",
+    "email": "onthaal@kla.be",
+    "phone": "03 232 74 47",
+    "directie": {
+      "firstName": "Ann",
+      "lastName": "Huybrechts",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2082846",
+    "longitude": "4.411034299999983",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Spectrumschool",
+    "street": "Ruggeveldlaan 496",
+    "postalcode": "2100",
+    "city": "Deurne",
+    "email": "info@spectrumschool.be",
+    "phone": "03 328 05 00",
+    "directie": {
+      "firstName": "Christine",
+      "lastName": " Hannes",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2198521",
+    "longitude": "4.480515999999966",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Spectrumschool Campus Plantijn-Moretus",
+    "street": "Plantin en Moretuslei 165",
+    "postalcode": "2140",
+    "city": "Borgerhout",
+    "email": "info@spectrumschool.be",
+    "phone": "03 328 05 00",
+    "directie": {
+      "firstName": "Christine",
+      "lastName": " Hannes",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2098859",
+    "longitude": "4.430468700000006",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Technisch Atheneum Campus Kapellen",
+    "street": "Pastoor Vandenhoudstraat 8",
+    "postalcode": "2950",
+    "city": "Kapellen",
+    "email": "gotak.campuskapellen@g-o.be",
+    "phone": "03 664 43 00",
+    "directie": {
+      "firstName": "Axel",
+      "lastName": " Lynen",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2098859",
+    "longitude": "4.430468700000006",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Technisch Atheneum Campus Stabroek",
+    "street": "Sint Catharinastraat 10",
+    "postalcode": "2940",
+    "city": "Stabroek",
+    "email": "gotak.campuskapellen@g-o.be",
+    "phone": "03 664 43 00",
+    "directie": {
+      "firstName": "Axel",
+      "lastName": " Lynen",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.331461",
+    "longitude": "4.373995299999933",
+	"distanceFromMyLocation" : 0
+  },
+  { 
+    "name": "Middenschool en Koninklijk Atheneum Ekeren van het GO!",
+    "street": "Pastoor De Vosstraat 19",
+    "postalcode": "2180",
+    "city": "Ekeren",
+    "email": "directie.kaekeren@antigon.be",
+    "phone": "03 541 14 28",
+    "directie": {
+      "firstName": "Ann",
+      "lastName": "Cuvelier",
+      "phone": "0486788723"
+    },
+    "secretariaat": {
+      "phone": "0486788723"
+    },
+    "preventieadviseur": {
+      "firstName": "Frederic",
+      "lastName": "Jaminet",
+      "phone": "0486788723"
+    },
+    "latitude": "51.2760578",
+    "longitude": "4.4225821",
+    "distanceFromMyLocation" : 0
+  }
+]

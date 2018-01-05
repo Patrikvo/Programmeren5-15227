@@ -1,0 +1,644 @@
+{
+  "api": "VOS - procedures",
+  "title": "Leerkracht/Docent/Opvoeder",
+  "code": "PROCLDO",
+  "role": "LDO",
+  "updated": "2017-12-08T19:58:42.949Z",
+  "procedure": [
+    {
+      "code": "BM",
+      "title": "Brandmelding",
+      "version": "0.0",
+      "updated": "2010-01-07T19:58:42.949Z",
+      "heading": "Bij ontdekking van brand:",
+      "step": [
+        {
+          "title": "Blijf kalm"
+        },
+        {
+          "title": "Geef alarm",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "STOP onmiddellijk alle activiteiten"
+        },
+        {
+          "title": "Druk de meldknop van het brandalarm in"
+        },
+        {
+          "title": "Het brandalarmsignaal betekent onmiddellijke evacuatie."
+        }
+      ]
+    },
+    {
+      "code": "BREV",
+      "title": "Evacuatie in geval van brand",
+      "version": "0.0",
+      "heading": "Wat te doen?",
+      "updated": "2010-01-07T19:58:42.949Z",
+      "step": [
+        {
+          "title": "Blijf kalm!"
+        },
+        {
+          "title": "Laat alles liggen. Neem geen boekentassen mee."
+        },
+        {
+          "title": "Schakel alle apparaten, gas, drijfkracht uit."
+        },
+        {
+          "title": "Onderbreek alle telefoongesprekken, hou buitenlijnen vrij."
+        },
+        {
+          "title": "Sluit de vensters."
+        },
+        {
+          "title": "Controleer of alle aanwezige leerlingen deelnemen aan de evacuatie."
+        },
+        {
+          "title": "Vergeet je leerlingenlijst niet mee te nemen."
+        },
+        {
+          "title": "Laat het licht aan."
+        },
+        {
+          "title": "Verlaat het lokaal,  "
+        },
+        {
+          "title": "Doe de deur dicht (niet afsluiten)."
+        },
+        {
+          "title": "Volg de normale evacuatieweg naar de voorziene verzamelplaats."
+        },
+        {
+          "title": "Bij rookontwikkeling; het hoofd zo dicht mogelijk bij de grond houden."
+        },
+        {
+          "title": "Loop niet."
+        },
+        {
+          "title": "Neem nooit de lift."
+        },
+        {
+          "title": "Indien de weg versperd is, neem een andere vluchtweg (vb. nooduitgang)."
+        },
+        {
+          "title": "Ga met leerlingen naar de voorziene verzamelplaats en keer nooit terug."
+        },
+        {
+          "title": "Stel je leerlingen op en kijk of er geen afwezigen zijn door naamafroeping. Iedere verantwoordelijke dient een actueel gehouden lijst van de leerlingen die hem toevertrouwd zijn, te bezitten."
+        },
+        {
+          "title": "Deel je bevindingen mee aan de directeur en/of zijn afgevaardigde en/of de evacuatieverantwoordelijke."
+        },
+        {
+          "title": "Geef de naam van je klas, het nummer van het ontruimde lokaal en het aantal aanwezige leerlingen (+ afwezigen + vermisten) aan de evacuatieverantwoordelijke en/of de hulpdiensten."
+        },
+        {
+          "title": "Verzamel na controle, mits goedkeuring van de hulpdiensten, met je leerlingen op een veiligere plaats."
+        },
+        {
+          "title": "Blijf bij je leerlingen en wacht verdere instructies af van de hulpdiensten en/of evacuatieverantwoordelijke."
+        }
+      ]
+    },
+    {
+      "code": "BA",
+      "title": "Bomalarm",
+      "version": "0.0",
+      "updated": "2017-09-28T19:58:42.949Z",
+      "heading": "Wat te doen?",
+      "step": [
+        {
+          "title": "Bomalarm via telefonische oproep:",
+          "list": [
+            {
+              "title": "Blijf kalm en offelijk, vermijd paniek, hecht belang aan de kenmerken van de stem of andere kenmerken om de persoon te kunnen identificeren (man/vrouw, accent,...) evenals de plaats (achtergrondgeluiden, trein, vliegtuig, ...)"
+            },
+            {
+              "title": "het telefoonnummer, datum en uur van de oproep noteren"
+            },
+            {
+              "title": "de uitgesproken woorden noteren"
+            },
+            {
+              "title": "de stemmen en de achtergrondgeluiden noteren"
+            },
+            {
+              "title": "het motief of de reden van het dreigement noteren"
+            }
+          ]
+        },
+        {
+          "title": "Bomalarm via geschreven of opgenomen boodschap:",
+          "list": [
+            {
+              "title": "Paniek vermijden"
+            },
+            {
+              "title": "deze zo weinig mogelijk aanraken en in een blanco omslag steken (papier of plastiek)"
+            }
+          ]
+        },
+        {
+          "title": "geef alarm:",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "Verwittig de brandweer 112:",
+          "action": [
+            {
+              "code": "TEL",
+              "phoneNumber": "0486788723"
+            }
+          ]
+        },
+        {
+          "title": "Verwittig de politie 101:",
+          "action": [
+            {
+              "code": "TEL",
+              "phoneNumber": "0486788723"
+            }
+          ]
+        },
+        {
+          "title": "Evacuatie?",
+          "list": [
+            {
+              "title": "De politie beslist of er al dan niet moet geëvacueerd worden."
+            },
+            {
+              "title": "Evacuatie van het gebouw starten."
+            }
+          ]
+        },
+        {
+          "title": "Vooraleer de plaats te verlaten:",
+          "list": [
+            {
+              "title": "Vensters en deuren openen (drukgolf bij explosie)"
+            },
+            {
+              "title": "Schakel alle apparaten en machines uit"
+            },
+            {
+              "title": "Laat verlichting branden"
+            },
+            {
+              "title": "Neem alle persoonlijke bezittingen mee"
+            },
+            {
+              "title": "Nagaan of er nog personen in het lokaal zijn"
+            },
+            {
+              "title": "Verzamel en begeleid de personen waarvoor men verantwoordelijk is"
+            },
+            {
+              "title": "Ga naar de evacuatieplaats"
+            }
+          ]
+        },
+        {
+          "title": "Op de evacuatieplaats:",
+          "code": "LIST",
+          "list": [
+            {
+              "title": "Ga na of de oproep naar de hulpdiensten gebeurd is"
+            },
+            {
+              "title": "Overgaan tot fouilleren samen met de politiediensten"
+            },
+            {
+              "title": "Terug naar de lokalen gaan bij negatieve fouillering en toestemming hulpdiensten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "GL",
+      "title": "Gaslek",
+      "version": "0.0",
+      "updated": "2010-01-07T19:58:42.949Z",
+      "heading": "Wat te doen bij een gaslek?",
+      "step": [
+        {
+          "title": "Blijf kalm"
+        },
+        {
+          "title": "Geef alarm",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "STOP onmiddellijk alle activiteiten"
+        },
+        {
+          "title": "Druk de meldknop van het brandalarm in"
+        },
+        {
+          "title": "Het brandalarmsignaal betekent onmiddellijke evacuatie."
+        }
+      ]
+    },
+    {
+      "code": "VV",
+      "title": "Verdacht voorwerp",
+      "version": "0.0",
+      "updated": "2017-09-28T19:58:42.949Z",
+      "heading": "Wat te doen?",
+      "step": [
+        {
+          "title": "Bij ontdekking van een verdacht voorwerp of pakket:",
+          "list": [
+            {
+              "title": "Zoeken naar de eigenaar"
+            },
+            {
+              "title": "Indien de eigenaar onvindbaar is:"
+            },
+            {
+              "title": "Blijf kalm, vermijd paniek, raak het voorwerp/pakket niet aan"
+            },
+            {
+              "title": "Verwijder de personen in de nabijheid"
+            }
+          ]
+        },
+        {
+          "title": "Wanneer is een ontvangen pakket verdacht?",
+          "list": [
+            {
+              "title": "Voorwerp waaraan u zich niet verwacht of dat u niet kan identificeren"
+            },
+            {
+              "title": "Fictief terugadres of geen adres, overdreven frankering"
+            },
+            {
+              "title": "Vreemde reuk"
+            },
+            {
+              "title": "Klemmen, touwen of draden die uitsteken"
+            },
+            {
+              "title": "Pakket uit harde materie of te volumineus/buitenmaats"
+            },
+            {
+              "title": "Ontkleurde, bevlekte verpakking, oliesporen of kristallen"
+            },
+            {
+              "title": "Er komt geluid uit het pakket"
+            },
+            {
+              "title": "Een vloeistof sijpelt of lekt uit het pakket, aanwezigheid van poeder of vloeistof"
+            },
+            {
+              "title": "Aanwezigheid van een dreignota."
+            }
+          ]
+        },
+        {
+          "title": "Wat te doen bij ontvangst van verdacht pakket?",
+          "list": [
+            {
+              "title": "Raak niets aan en open of verplaats het pakket niet."
+            },
+            {
+              "title": "Doe alle aanwezige personen buitengaan en sluit de deur van het lokaal."
+            },
+            {
+              "title": "Alleen als het pakket geopend werd:"
+            },
+            {
+              "title": "Verplaats het niet."
+            },
+            {
+              "title": "Trek al de gecontamineerde kleren uit (poeder/vloeistof) en plaats ze in een hermetisch gesloten plastic zak."
+            },
+            {
+              "title": "Was uw handen met zeep/neem een stortbad."
+            }
+          ]
+        },
+        {
+          "title": "geef alarm",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "Verwittig de politie 101:",
+          "action": [
+            {
+              "code": "TEL",
+              "phoneNumber": "0486788723"
+            }
+          ]
+        },
+        {
+          "title": "Evacuatie?",
+          "list": [
+            {
+              "title": "De politie beslist of er al dan niet moet geëvacueerd worden."
+            },
+            {
+              "title": "Evacuatie van het gebouw starten."
+            }
+          ]
+        },
+        {
+          "title": "Op de evacuatieplaats:",
+          "list": [
+            {
+              "title": "Ga na of de oproep naar de hulpdiensten gebeurd is"
+            },
+            {
+              "title": "Overgaan tot fouilleren samen met de politiediensten"
+            },
+            {
+              "title": "Terug naar de lokalen gaan bij negatieve fouillering en toestemming hulpdiensten"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "TA",
+      "title": "Terroristische aanslag",
+      "version": "0.0",
+      "updated": "2017-09-29T19:58:42.949Z",
+      "heading": "Wat te doen?",
+      "step": [
+        {
+          "title": "Geef alarm:",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "Verwittig het secretariaat:",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "secretariaat"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "secretariaat"
+            }
+          ]
+        },
+        {
+          "title": "Verwittig de politie 101:",
+          "action": [
+            {
+              "code": "TEL",
+              "phoneNumber": "0486788723"
+            }
+          ]
+        },
+        {
+          "title": "Geef duidelijke informatie met betrekking tot de situatie:",
+          "list": [
+            {
+              "title": "Wat is de vorm van de dreiging?"
+            },
+            {
+              "title": "Met hoeveel zijn de daders?"
+            },
+            {
+              "title": "Waar bevinden ze zich precies?"
+            },
+            {
+              "title": "Beschrijving van de daders?"
+            },
+            {
+              "title": "Welke wapens worden gebruikt?"
+            },
+            {
+              "title": "Zijn er al slachtoffers? Hoeveel? Waar?"
+            },
+            {
+              "title": "Ernst van de verwondingen?"
+            },
+            {
+              "title": "Volg hun instructies."
+            }
+          ]
+        },
+        {
+          "title": "De verantwoordelijke van de school of zijn gemandateerde:",
+          "list": [
+            {
+              "title": "verwittigt het personeel en de leerlingen van de school via intercom of een ander communicatiesysteem;"
+            },
+            {
+              "title": "indien de school geen intercom heeft, waarschuwt iedereen met een afgesproken signaal dat duidelijk onderscheiden is van brand en evacuatie;"
+            },
+            {
+              "title": "geeft duidelijke instructies over hoe gehandeld moet worden;"
+            },
+            {
+              "title": "gebruikt geen codetaal die verkeerd begrepen kan worden;"
+            },
+            {
+              "title": "houdt zich ter beschikking bij de aankomst van de politie;"
+            },
+            {
+              "title": "is indien mogelijk fysiek aanwezig op een vooraf afgesproken plaats;"
+            },
+            {
+              "title": "of anders via telefoon/gsm;"
+            },
+            {
+              "title": "geeft de recentste en bijkomende informatie;"
+            },
+            {
+              "title": "overhandigt kaartgegevens, sleutels… ;"
+            },
+            {
+              "title": "is gids voor de interventieploegen;"
+            },
+            {
+              "title": "communicatie gebeurt via één persoon om te vermijden dat gsm-masten worden overbelast en dat verschillende verhalen leiden tot miscommunicatie en overmatige ongerustheid;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "AMOK",
+      "title": "AMOK situatie en blind geweld",
+      "version": "0.0",
+      "updated": "2017-09-29T19:58:42.949Z",
+      "heading": "Wat te doen?",
+      "step": [
+        {
+          "title": "AMOK scenario in de school",
+          "list": [
+            {
+              "title": "Eén of meerdere daders dringen de school binnen om zoveel mogelijk slachtoffers te maken."
+            },
+            {
+              "title": "Ze verplaatsen zich daarvoor binnen de schoolgebouwen op zoek naar slachtoffers die hij/zij zo eenvoudig mogelijk zonder enige obstructies tracht(en) te vinden."
+            }
+          ]
+        },
+        {
+          "title": "Verwittig de directe verantwoordelijke:",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "PV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "PV"
+            }
+          ]
+        },
+        {
+          "title": "Verwittig het secretariaat:",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "secretariaat"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "secretariaat"
+            }
+          ]
+        },
+        {
+          "title": "Verwittig de politie 101:",
+          "action": [
+            {
+              "code": "TEL",
+              "phoneNumber": "0486788723"
+            }
+          ]
+        },
+        {
+          "title": "Geef duidelijke informatie met betrekking tot de situatie:",
+          "list": [
+            {
+              "title": "Wat gebeurt er? Zo exact mogelijk de situatie weergeven."
+            },
+            {
+              "title": "Met hoeveel zijn de daders?"
+            },
+            {
+              "title": "Waar bevinden ze zich precies?"
+            },
+            {
+              "title": "Beschrijving van de daders?"
+            },
+            {
+              "title": "Werd een vuurwapen gebruikt? Ander wapen?"
+            },
+            {
+              "title": "Zijn er al slachtoffers? Hoeveel? Waar?"
+            },
+            {
+              "title": "Ernst van de verwondingen?"
+            },
+            {
+              "title": "Volg hun instructies."
+            }
+          ]
+        },
+        {
+          "title": "Overhandig aan de politie:",
+          "list": [
+            {
+              "title": "de rode plankoker die bevestigd is in de inkomhal van de school; die bevat, grijpklaar, voor de interventie van de politie, de plannen/plattegrond van de school met nummering en indeling van klaslokalen en gebouwen;"
+            },
+            {
+              "title": "aanwezigheidslijsten leerlingen en personeel, lokaalbezetting en klassenlijsten;"
+            },
+            {
+              "title": "plannen met aanduiding van afsluitkranen van nutsvoorzieningen, alarm- of brandinstallaties (elektriciteit, water, sprinklerinstallatie, sirenes, …);"
+            },
+            {
+              "title": "ligging en uitrusting EHBO post;"
+            },
+            {
+              "title": "intern noodplan, evacuatie scenario;"
+            }
+          ]
+        },
+        {
+          "title": "Richtlijnen LOCK DOWN en SCENARIO bij AMOK incident:",
+          "list": [
+            {
+              "title": "Leerlingen blijven in de klassen, deuren slotvast (binnenkant lokaal gebarricadeerd) en leerlingen schuilen (op de grond liggen), weg van vensters en deuren (zodat zij niet kunnen waargenomen worden)."
+            },
+            {
+              "title": "GSM’s worden op “stil” gezet."
+            },
+            {
+              "title": "Leerlingen blijven stil liggen en geven eventueel informatie over de dader(s) via GSM."
+            },
+            {
+              "title": "Vluchtende leerlingen veilig opvangen: <br/>- <strong>in de school</strong>: ander schoolgebouw of barricadeerbare veilige schuilplaats;<br/><strong>- buiten de school</strong>: zie noodplan evacuatie schoolgebouw"
+            },
+            {
+              "title": "Leerlingen blijven stil liggen en geven eventueel informatie over de dader(s) via GSM."
+            },
+            {
+              "title": "Aanwezige en ontbrekende personen registreren."
+            },
+            {
+              "title": "Organiseren van opvang en psychische ondersteuning (traumatische ervaringen). Inzet deskundigen: leerling begeleiding, CLB, externe - en interne dienst preventie en bescherming, directie."
+            },
+            {
+              "title": "Opvolgen acties intern noodplan."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

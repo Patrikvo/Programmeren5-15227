@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <title>Veilig op school</title>
+</head>
+
+<body>
+    <div class="tower" id="tower">
+
+        <div id="home-index" class="floor">
+            <header class="front">
+                <nav class="control-panel">
+                    <button class="tile" name="uc" value="home/index">
+                        <span class="icon-home"></span>
+                        <span class="screen-reader-text">Home</span>
+                    </button>
+                </nav>
+                <h1>veilig<br/><span>op school</span></h1>
+            </header>
+            <div class="show-room index" id="home">
+                    <div class="tile identity">
+                    </div>
+                        <button class="tile" name="uc" value="call/hot-line">
+                            <span class="icon-phone"></span>
+                            <span class="screen-reader-text">112</span>
+                            <h1>112</h1>
+                        </button>
+                        <button class="tile" name="uc" value="fire/index">
+                            <span class="icon-fire"></span>
+                            <span class="screen-reader-text">Brand</span>
+                            <h1>Brand</h1>
+                        </button>
+                        <button class="tile" name="uc" value="accident/index">
+                            <span class="icon-accident-staircase"></span>
+                            <span class="screen-reader-text">Ongeval</span>
+                            <h1>Ongeval</h1>
+                        </button>
+                        <button class="tile" name="uc" value="home/gas-leak">
+                            <span class="icon-gas-mask"></span>
+                            <span class="screen-reader-text">Gaslek</span>
+                            <h1>Gaslek</h1>
+                        </button>
+                        <button class="tile" name="uc" value="home/shocking-event">
+                            <span class="icon-shock"></span>
+                            <span class="screen-reader-text">Schokkende gebeurtenis</span>
+                            <h1>Schokkende gebeurtenis</h1>
+                        </button>
+                        <button class="tile" name="uc" value="home/amok">
+                            <span class="icon-battle"></span>
+                            <span class="screen-reader-text">AMOK & blind geweld</span>
+                            <h1>AMOK & blind geweld</h1>
+                        </button>
+                        <button class="tile" name="uc" value="home/radicalisation">
+                            <span class="icon-radicalisation"></span>
+                            <span class="screen-reader-text">Radicalisering</span>
+                            <h1>Radicalisering</h1>
+                        </button>
+                        <button class="tile" name="uc" value="terror/index">
+                            <span class="icon-terrorism"></span>
+                            <span class="screen-reader-text">Terreur dreiging</span>
+                            <h1>Terreur dreiging</h1>
+                        </button>
+                        <button class="tile" name="uc" value="psycho-social-risk/index">
+                            <span class="icon-mental-health"></span>
+                            <span class="screen-reader-text">Psycho-sociaal risico</span>
+                            <h1>Psycho-sociaal risico</h1>
+                        </button>
+                         <button class="tile" name="uc" value="home/settings">
+                            <span class="icon-settings"></span>
+                            <span class="screen-reader-text">Instellingen</span>
+                            <h1>Instellingen</h1>
+                        </button>
+            </div>
+        </div>
+
+        <!-- VIEWS FOR DIFFERENT KIND OF EMERGENCIES-->
+
+
+        <!-- Brand -->
+        <div class="floor" id="fire-index">
+            <header class="front">
+                <nav class="control-panel">
+                    <button class="tile" name="uc" value="home/index">
+                        <span class="icon-home"></span>
+                        <span class="screen-reader-text">Home</span>
+                    </button>
+                </nav>
+                <h1>brand</h1>
+            </header>
+            <div class="show-room index" id="fire">
+                <div class="tile identity">
+                </div>
+                <button class="tile" name="uc" value="fire/detection">
+                    <span class="icon-phone"></span>
+                    <span class="screen-reader-text">Brand melding</span>
+                    <h1>Brandmelding</h1>
+                </button>
+                <button class="tile" name="uc" value="fire/evacuation">
+                    <span class="icon-evacuation-dark"></span>
+                    <span class="screen-reader-text">Evacuatie</span>
+                    <h1>Evacuatie</h1>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Ongeval -->
+        <div class="floor" id="accident-index">
+            <header class="front">
+                <nav class="control-panel">
+                    <button class="tile" name="uc" value="home/index">
+                        <span class="icon-home"></span>
+                        <span class="screen-reader-text">Home</span>
+                    </button>
+                </nav>
+                <h1>veilig<br/><span>op school</span></h1>
+            </header>
+            <div class="show-room index" id="accident">
+                <div class="tile identity">
+                </div>
+                <button class="tile" name="uc" value="accident/extra-muros">
+                    <span class="icon-extra-muros"></span>
+                    <span class="screen-reader-text">Extra muros</span>
+                    <h1>Extra muros</h1>
+                </button>
+                <button class="tile" name="uc" value="accident/work-accident">
+                    <span class="icon-accident"></span>
+                    <span class="screen-reader-text">Arbeidsongeval</span>
+                    <h1>Arbeidsongeval</h1>
+                </button>
+                <button class="tile" name="uc" value="accident/serious-work-accident">
+                    <span class="icon-helmet-gear"></span>
+                    <span class="screen-reader-text">Ernstig arbeidsongeval</span>
+                    <h1>Ernstig arbeidsongeval</h1>
+                </button>
+                <button class="tile" name="uc" value="accident/to-from-school">
+                    <span class="icon-schoolbus"></span>
+                    <span class="screen-reader-text">Van en naar school</span>
+                    <h1>Van en naar school</h1>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- psycho-sociaal-risico -->
+        <div class="floor" id="psycho-social-index">
+            <header class="front">
+                <nav class="control-panel">
+                    <button class="tile" name="uc" value="home/index">
+                        <span class="icon-home"></span>
+                        <span class="screen-reader-text">Home</span>
+                    </button>
+                </nav>
+                <h1>veilig<br/><span>op school</span></h1>
+            </header>
+            <div class="show-room index" id="psycho-social-risk">
+                <div class="tile identity">
+                </div>
+                <button class="tile" name="uc" value="psycho-social/harassment">
+                    <span class="icon-sexual-assault"></span>
+                    <span class="screen-reader-text">Ongewenst gedrag</span>
+                    <h1>Ongewenst gedrag</h1>
+                </button>
+                <button class="tile" name="uc" value="psycho-social/teasing">
+                    <span class="icon-teasing-boy"></span>
+                    <span class="screen-reader-text">Pesten</span>
+                    <h1>Pesten</h1>
+                </button>
+                <button class="tile" name="uc" value="psycho-social/burn-out">
+                    <span class="icon-burn-out"></span>
+                    <span class="screen-reader-text">Burn-out</span>
+                    <h1>Burn-out</h1>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Terreur -->
+        <div class="floor" id="terror-index">
+            <header class="front">
+                <nav class="control-panel">
+                    <button class="tile" name="uc" value="home/index">
+                        <span class="icon-home"></span>
+                        <span class="screen-reader-text">Home</span>
+                    </button>
+                </nav>
+                <h1>veilig<br/><span>op school</span></h1>
+            </header>
+            <div class="show-room index" id="terror">
+                <div class="tile identity">
+                </div>
+                <button class="tile" name="uc" value="terror/bomb-alarm">
+                    <span class="icon-bomb"></span>
+                    <span class="screen-reader-text">Bomalarm</span>
+                    <h1>Bomalarm</h1>
+                </button>
+                <button class="tile" name="uc" value="terror/suspicious-object">
+                    <span class="icon-suspicious-object"></span>
+                    <span class="screen-reader-text">Verdacht voorwerp</span>
+                    <h1>Verdacht voorwerp</h1>
+                </button>
+                <button class="tile" name="uc" value="terror/terrorist-attack">
+                    <span class="icon-terrorist1"></span>
+                    <span class="screen-reader-text">Terroristische aanslag</span>
+                    <h1>Terroristische aanslag</h1>
+                </button>
+            </div>
+        </div>
+
+
+
+        <!-- Inloggen -->
+        <div class="floor" id="home-loggingIn">
+            <header class="front">
+                <nav class="control-panel">
+                    <button class="tile" name="uc" value="page/previous">
+                        <span class="icon-arrow-left"></span>
+                        <span class="screen-reader-text">Vorige pagina</span>
+                    </button>
+                </nav>
+                <h1>Aanmelden</h1>
+            </header>
+            <div class="show-room view">
+                <div class="form">
+                    <div class="field">
+                        <label for="userName">Gebruikersnaam: </label>
+                        <input id="userName" name="userName" class="text" type="text" required/>
+                    </div>
+                    <div class="field">
+                        <label for="password">Paswoord: </label>
+                        <input id="password" name="userPassword" type="password" required/>
+                    </div>
+                    <button type="button" name="uc" value="home/login">Aanmelden</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- VIEW FOR SHOWING PROCEDURE -->
+        <div class="floor" id="view-procedure">
+            <header class="front">
+                <nav class="control-panel">
+                    <button class="tile" name="uc" value="page/previous">
+                        <span class="icon-arrow-left"></span>
+                        <span class="screen-reader-text">Vorige pagina</span>
+                    </button>
+                </nav>
+                <h1>titel</h1>
+            </header>
+            <div class="show-room view">
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="app">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <script type="text/javascript" src="js/helpers.js"></script>
+    <script type="text/javascript" src="js/modern-ajax.js"></script>
+    <script type="text/javascript" src="js/vos.js"></script>	
+</body>
+
+</html>

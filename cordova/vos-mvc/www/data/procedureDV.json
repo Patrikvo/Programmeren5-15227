@@ -1,0 +1,215 @@
+{
+  "api": "VOS - procedures",
+  "title" : "Directe verantwoordelijke",
+  "code": "PROCDV",
+  "role": "DV",
+  "updated": "2017-12-08T19:58:42.949Z",
+  "procedure": [
+    {
+      "code": "BM",
+      "title": "Brandmelding",
+      "version": "0.0",
+      "updated": "2010-01-07T19:58:42.949Z",
+      "heading": "Bij ontdekking van brand:",
+      "step": [
+        {
+          "title": "Blijf kalm"
+        },
+        {
+          "title": "Verwittig het crisisteam",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "Start de noodprocedure op"
+        },
+        {
+          "title": "Bel 112",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "En geef volgende informatie door",
+          "list": [
+            {
+              "title": "wie je bent;"
+            },
+            {
+              "title": "wat er gebeurd is;"
+            },
+            {
+              "title": "waar het gebeurd is: precieze plaatsbepaling (gemeente, straatnaam + huisnummer);"
+            },
+            {
+              "title": "aantal slachtoffers (bepaalt mee het aantal ziekenwagens dat gestuurd wordt);"
+            },
+            {
+              "title": "letsels (zo kan de 112 inschatten of er een MUG moet meegestuurd worden);"
+            },
+            {
+              "title": "bijzondere omstandigheden;"
+            }
+          ]
+        },
+        {
+          "title" : "Volg verdere instructies van het crisisteam en de hulpdiensten op."
+        }
+      ]
+    },
+    {
+      "code": "BREV",
+      "title": "Evacuatie in geval van brand",
+      "version": "0.0",
+      "heading": "Wat te doen?",
+      "updated": "2010-01-07T19:58:42.949Z",
+      "step": [
+        {
+          "title": "Blijf kalm!"
+        },
+        {
+          "title": "Laat alles liggen. Neem geen boekentassen mee."
+        },
+        {
+          "title": "Schakel alle apparaten, gas, drijfkracht uit."
+        },
+        {
+          "title": "Onderbreek alle telefoongesprekken, hou buitenlijnen vrij."
+        },
+        {
+          "title": "Sluit de vensters."
+        },
+        {
+          "title": "Controleer of alle aanwezige leerlingen deelnemen aan de evacuatie."
+        },
+        {
+          "title": "Vergeet je leerlingenlijst niet mee te nemen."
+        },
+        {
+          "title": "Laat het licht aan."
+        },
+        {
+          "title": "Verlaat het lokaal,  "
+        },
+        {
+          "title": "Doe de deur dicht (niet afsluiten)."
+        },
+        {
+          "title": "Volg de normale evacuatieweg naar de voorziene verzamelplaats."
+        },
+        {
+          "title": "Bij rookontwikkeling; het hoofd zo dicht mogelijk bij de grond houden."
+        },
+        {
+          "title": "Loop niet."
+        },
+        {
+          "title": "Neem nooit de lift."
+        },
+        {
+          "title": "Indien de weg versperd is, neem een andere vluchtweg (vb. nooduitgang)."
+        },
+        {
+          "title": "Ga met leerlingen naar de voorziene verzamelplaats en keer nooit terug."
+        },
+        {
+          "title": "Stel je leerlingen op en kijk of er geen afwezigen zijn door naamafroeping. Iedere verantwoordelijke dient een actueel gehouden lijst van de leerlingen die hem toevertrouwd zijn, te bezitten."
+        },
+        {
+          "title": "Deel je bevindingen mee aan de directeur en/of zijn afgevaardigde en/of de evacuatieverantwoordelijke."
+        },
+        {
+          "title": "Geef de naam van je klas, het nummer van het ontruimde lokaal en het aantal aanwezige leerlingen (+ afwezigen + vermisten) aan de evacuatieverantwoordelijke en/of de hulpdiensten."
+        },
+        {
+          "title": "Verzamel na controle, mits goedkeuring van de hulpdiensten, met je leerlingen op een veiligere plaats."
+        },
+        {
+          "title": "Blijf bij je leerlingen en wacht verdere instructies af van de hulpdiensten en/of evacuatieverantwoordelijke."
+        }
+      ]
+    },
+    {
+      "code": "GL",
+      "title": "Gaslek",
+      "version": "0.0",
+      "updated": "2010-01-07T19:58:42.949Z",
+      "heading": "Wat te doen bij een gaslek?",
+      "step": [
+        {
+          "title": "Blijf kalm"
+        },
+        {
+          "title": "Verwittig het crisisteam",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "Start de noodprocedure op"
+        },
+        {
+          "title": "Bel 112",
+          "action": [
+            {
+              "code": "SMS",
+              "phoneNumber": "DV"
+            },
+            {
+              "code": "TEL",
+              "phoneNumber": "DV"
+            }
+          ]
+        },
+        {
+          "title": "En geef volgende informatie door",
+          "list": [
+            {
+              "title": "wie je bent;"
+            },
+            {
+              "title": "wat er gebeurd is;"
+            },
+            {
+              "title": "waar het gebeurd is: precieze plaatsbepaling (gemeente, straatnaam + huisnummer);"
+            },
+            {
+              "title": "aantal slachtoffers (bepaalt mee het aantal ziekenwagens dat gestuurd wordt);"
+            },
+            {
+              "title": "letsels (zo kan de 112 inschatten of er een MUG moet meegestuurd worden);"
+            },
+            {
+              "title": "bijzondere omstandigheden;"
+            }
+          ]
+        },
+        {
+          "title" : "Volg verdere instructies van het crisisteam en de hulpdiensten op."
+        }
+      ]
+    }
+  ]
+}

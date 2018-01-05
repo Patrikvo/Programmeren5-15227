@@ -1,0 +1,21 @@
+{
+  "api": "Identity",
+  "code": "ID",
+  "title": "Identiteit",
+  "description": "Persoonlijke gegevens",
+  "version": "0.0",
+  "updated": "2016-11-16 13:33:42",
+  "role": "STAF",
+  "userName" : "jinghelbrecht",
+  "firstName": "Joseph",
+  "lastName": "Inghelbrecht",
+  "phoneWork": "0486 78 87 23",
+  "phoneHome": "0486 78 87 23",
+  "mobile": "0486 78 87 23",
+  "email": "jef.inghelbrecht@telenet.be",
+  "street": "Braziliëstraat 38",
+  "postalCode": "2000",
+  "city": "Antwerpen",
+  "function": "docent",
+  "loggedIn" : false
+}

@@ -1,0 +1,110 @@
+{
+  "API": "role",
+  "Description" : "Crisiscel en rol",
+  "Version": "0.0",
+  "Function": [
+    {
+      "Code": "D",
+      "Name": "Directeur van de onderwijsinstelling",
+      "FirstName": "Sophie",
+      "LastName": "Van Der Avort",
+      "PhoneWork": "",
+      "PhoneHome": "",
+      "Mobile": "",
+      "email": "",
+      "street": "",
+      "PostalCode": "",
+      "City": "",
+      "Roles": [
+        {
+          "Name": "managen van de crisis samen met CLB"
+        },
+        {
+          "Name": "isoleren van plaats van het ongeval"
+        },
+        {
+          "Name": "opvang getuige(n)/medeleerlingen betrokkene"
+        },
+        {
+          "Name": "verwittiging politie"
+        },
+        {
+          "Name": "verwittig hulpdiensten"
+        },
+        {
+          "Name": "informeren van de ouders"
+        },
+        {
+          "Name": "opvangen van de broers en zussen indien op zelfde school van de betrokken leerling"
+        },
+        {
+          "Name": "opvang van familie indien het gaat om leerkracht"
+        },
+        {
+          "Name": "verwitting scholengroep - contact Algemeen Directeur"
+        },
+        {
+          "Name": "samenroepen & briefing van, verdelen rollen en leiding over het crisisteam"
+        },
+        {
+          "Name": "samen met CLB beslissen over het al dan niet schorsen van lessen/activiteiten"
+        },
+        {
+          "Name": "opstellen van stavaza/inventaris"
+        },
+        {
+          "Name": "interne & externe communicatie",
+          "Roles": [
+            {
+              "Name": "validering van alle teksten en communicatieacties"
+            },
+            {
+              "Name": "contact met burgemeester indien ongeval in omgeving van de onderwijsinstelling"
+            },
+            {
+              "Name": "verwittiging centrale communicatiedienst"
+            },
+            {
+              "Name": "optreden als woordvoerder"
+            },
+            {
+              "Name": "24/24 bereikbaar (ofwel gemandateerde hiervoor aanduiden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "PA",
+      "Name": "Preventieadviseur",
+      "FirstName": "Sophie",
+      "LastName": "Van Der Avort",
+      "PhoneWork": "",
+      "PhoneHome": "",
+      "Mobile": "",
+      "email": "",
+      "street": "",
+      "PostalCode": "",
+      "City": "",
+      "Roles": [
+        {
+          "Name": "verwittiging van de preventieadviseur-coördinator"
+        },
+        {
+          "Name": "in samenspraak met directie",
+          "Roles": [
+            {
+              "Name": "contact met toezicht Welzijn op het Werk"
+            },
+            {
+              "Name": "toezien op/bijstaan bij het volgen van de procedure ernstige ongevallen"
+            },
+            {
+              "Name": "contacteren en aangifte bij Ethias en/of departement onderwijs"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

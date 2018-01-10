@@ -76,7 +76,25 @@ var vos = {
     },
 
     'getPosition': function () { },
-    'setMyLocation': function () { }
+    'setMyLocation': function () { },
+
+
+    login: function () {
+    //    var userName = document.getElementById('userName').value;
+     //   var password = document.getElementById('password').value;
+
+        signIn(null);
+
+        
+    },
+
+    logout: function () {
+        signOut(null);
+        vos.model.identity.firstName = "Gast";
+        vos.model.identity.lastName = "";
+        vos.model.identity.loggedIn = false;
+    }
+
 
 }
 
@@ -96,6 +114,7 @@ var render = {
             var buttonElement = makeButton('Afmelden');
             buttonElement.setAttribute('name', 'uc');
             buttonElement.setAttribute('value', 'home/logout');
+            
             elem.appendChild(buttonElement);
 
         }
@@ -103,7 +122,9 @@ var render = {
             elem.appendChild(makeTextElement('aangemeld als gast'));
             var buttonElement = makeButton('Aanmelden');
             buttonElement.setAttribute('name', 'uc');
-            buttonElement.setAttribute('value', 'home/loggingIn');
+            //buttonElement.setAttribute('value', 'home/loggingIn');
+            buttonElement.setAttribute('value', 'home/login');
+            
             elem.appendChild(buttonElement);
         }
         return elem;
@@ -363,3 +384,14 @@ var controller = {
 };
 
 
+setUserInfo = function (fname, lname, id) {
+    vos.model.identity.firstName = fname;
+
+    vos.model.identity.lastName = lname;
+
+    vos.model.identity.loggedIn = true;
+
+    controller['home']['index']();
+
+    //window.location.assign("index.html#home-index");
+}

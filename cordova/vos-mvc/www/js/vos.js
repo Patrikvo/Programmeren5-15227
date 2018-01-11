@@ -75,8 +75,47 @@ var vos = {
         }
     },
 
-    'getPosition': function () { },
-    'setMyLocation': function () { },
+    'getPosition': function () {
+        var options = {
+            maximumAge: 3600000,
+            timeout: 6000,
+            enableHighAccuracy: false
+        }
+        var onSuccess = function (pos) {
+            vos.model.position.latitude = pos.coords.latitude.toFixed(4);
+            vos.model.position.longitude = pos.coords.longitude.toFixed(4);
+            //vos.setMyLocation();
+            //render.identity('#identity');
+            //view['home']['index']();
+        };
+        var onError = function (error) {
+            // stel in op hoofdzetel
+            vos.model.position.latitude = 51.1771;
+            vos.model.position.longitude = 4.3533;
+            //vos.setMyLocation();
+            //render.identity('#identity');
+            //view['home']['index']();
+        };
+        var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+    },
+    'setMyLocation': function () {
+        vos.model.organisationList.forEach(function (item) {
+            item.distanceFromMyLocation = getDistanceFromLatLonInKm(
+                vos.model.position.latitude, vos.model.position.longitude,
+                item.latitude, item.longitude);
+        });
+        vos.model.organisationList.sort(function (a, b) {
+            return a.distanceFromMyLocation - b.distanceFromMyLocation;
+        });
+
+        vos.model.organisationList.forEach(
+            function (item) {
+                document.getElementById("feedback").innerHTML = '';
+                document.getElementById("feedback").innerHTML += item.distanceFromMyLocation + ' ' +
+                    item.longitude + ' ' + item.latitude + ' ' + item.name + '<br>';
+            });
+        vos.model.myLocation = vos.model.organisationList[0];
+    },
 
 
     login: function () {

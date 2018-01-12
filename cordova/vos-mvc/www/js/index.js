@@ -43,6 +43,53 @@ var app = {
     }
 };
 
+
+var phoneCall = function (number) {
+    // if (window.cordova) {
+    //     //ref = window.open('tel:' + number, '_system');
+    //     cordova.InAppBrowser.open('tel:' + number.replace(/\s/g,''), '_system');
+    //     //ref.addEventListener("endcallbutton", onEndCallKeyDown, false);
+    // }
+    if (window.cordova) {
+        var bypassAppChooser = true;
+        window.plugins.CallNumber.callNumber(onPhoneCallSuccess, onPhoneCallError, number, bypassAppChooser);
+    }
+};
+
+function onPhoneCallSuccess(result) {
+    // alert('succes: ' + result);
+}
+
+function onPhoneCallError(result) {
+    // alert('error: ' + result);
+}
+
+
+var smsSend = function (number, message) {
+    // CONFIGURATION
+    var options = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+            intent: 'INTENT'  // send SMS with the native android SMS messaging
+            // intent: '' // send SMS without open any other app
+        }
+    };
+
+    var success = function () {
+        alert('SMS is verstuurd!');
+    };
+
+    var error = function (e) {
+        alert('SMS is niet verstuurd:' + e);
+    };
+    if (typeof sms === 'undefined' || typeof sms.send === 'undefined') {
+        alert('SMS send is undefined. Would have sent error');
+    } else {
+        sms.send(number, message, options, success, error);
+    }
+};
+
+
 app.initialize();
 
 window.onload = function(){

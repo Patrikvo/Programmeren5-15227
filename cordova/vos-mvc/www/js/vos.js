@@ -74,6 +74,22 @@ var vos = {
             h1.innerHTML = title;
         }
     },
+    /**
+     * Voorbereiding versturen sms.
+     *
+     * @param {string} number telefoonnummer waarnaar sms gestuurd moet worden.
+     * @param {string} messageText boodschap die verstuurd zal worden.
+     */
+    smsPrepare: function (number, messageText) {
+        // number = '0486788723';
+        var message = messageText + '\n' +
+            vos.model.identity.firstName + ' ' + vos.model.identity.lastName + '\n' +
+            vos.model.myLocation.name + '\n' +
+            vos.model.myLocation.street + '\n' +
+            vos.model.myLocation.postalCode + ' ' + vos.model.myLocation.city + '\n' +
+            number;
+        smsSend(number, message);
+    },
 
     'getPosition': function () {
         var options = {

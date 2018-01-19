@@ -12,6 +12,7 @@ namespace VosAdmin.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Title = "Home";
             return View();
         }
 

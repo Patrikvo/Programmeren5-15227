@@ -1,0 +1,781 @@
+﻿html {
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'tower-pattern';
+    src: url('fonts/tower-pattern.ttf?tyzv4w') format('truetype'), url('fonts/tower-pattern.woff?tyzv4w') format('woff'), url('fonts/tower-pattern.svg?tyzv4w#tower-pattern') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Tower Pattern */
+.tower {
+    font-family: Verdana, sans-serif;
+    width: 100%;
+    background-color: rgba(249, 246, 244, 0.9);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.floor {
+    width: 90%;
+    opacity: 0.9;
+    margin: 0 5% 0 5%;
+    background-color: rgb(204,204,204); /* zilver */
+}
+
+.control-panel {
+    display: flex;
+    justify-content: flex-start;
+    height: 11%;
+    background-color: rgb(250,240,230); /* linnen */
+    padding: 0 1em 0 0;
+}
+
+/*
+    controle paneel icoon tegel
+    opmerking: Viewport-percentage lengths: the ‘vw’, ‘vh’, ‘vmin’, ‘vmax’ units
+    The viewport-percentage lengths are relative to the
+    size of the initial containing block.
+    When the height or width of the initial containing block is changed,
+    they are scaled accordingly.
+    However, when the value of ‘overflow’ on the root element is ‘auto’,
+    any scroll bars are assumed not to exist.
+    Bron: http://www.w3.org/TR/css3-values/#viewport-relative-lengths
+*/
+a.tile {
+    text-decoration: none;
+}
+
+.control-panel .tile {
+    margin: 2px;
+    padding: 4px 4px 0 4px;
+    /* indien masker word het absoluut geplaatst hierop*/
+    position: relative;
+    overflow: hidden;
+    background-color: #3b444b; /*arsenic*/
+    font-size: 6.5vh;
+    color: rgb(249,246,244); /* orange red peach spring wood */
+    align-self: center;
+}
+
+    /* standaard hover kan overschreven worden door ander schema */
+    .control-panel .tile:hover {
+        color: rgb(226,69,16); /* realgar */
+        cursor: pointer;
+    }
+
+.control-panel .banner {
+    margin-left: auto;
+}
+
+@media (orientation: portrait) {
+    .show-room.index {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+        .show-room.index > .tile {
+            height: 10em;
+            width: 98%;
+        }
+
+        .show-room.index .tile:nth-child(3) {
+            order: 8;
+        }
+
+        .show-room.index .tile:nth-child(4) {
+            order: 9;
+        }
+
+        .show-room.index .tile:nth-child(7) {
+            order: 10;
+        }
+}
+
+@media (orientation: landscape) {
+    .show-room.index {
+        height: 89%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+        .show-room.index .tile {
+            height: 11em;
+            flex: 1 0 17em;
+        }
+
+            .show-room.index .tile:nth-child(3) {
+                flex: 4 4 22em;
+            }
+
+            .show-room.index .tile:nth-child(4) {
+                flex: 2 2 12em;
+            }
+
+            .show-room.index .tile:nth-child(7) {
+                flex: 2 2 12em;
+            }
+
+            .show-room.index .tile:nth-child(11) {
+                flex: 2 2 8em;
+            }
+}
+
+/* show-room tegel */
+.show-room.index {
+    width: 100%;
+}
+
+    .show-room.index .tile {
+        margin: 0.5em 1% 0 1%;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* all the last times by mierlagypsy */
+        background-color: rgb(195,94,77);
+        overflow: hidden;
+        text-shadow: 2px 1px #0c0c0c;
+    }
+
+        .show-room.index .tile:last-child {
+            margin-bottom: 0.5em;
+        }
+    /* de link tegels hebben een andere achtergrondkleur */
+    .show-room.index a.tile {
+        background-color: rgb(222, 184, 135);
+    }
+
+        .show-room.index a.tile:hover {
+            color: rgb(249,246,244); /* orange red peach spring wood */
+            background-color: rgb(65,74,76); /* outer space */
+        }
+
+    .show-room.index .tile [class^="icon-"] {
+        font-size: 8vh;
+    }
+
+/* accessability */
+.screen-reader-text {
+    /* Reusable, toolbox kind of class
+voor screen readers, op die manier
+kunnen de readers lezen waarvoor
+de knop staat; de tekst is zelf
+niet zichtbaar op het scherm door negatieve
+waarden toe te kennen aan top en left */
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+
+.show-room.entity .detail {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.5em 0 0.5em;
+    width: 50%;
+    flex: 2 1 20em;
+    background-color: rgb(255, 228, 196);
+}
+
+
+.show-room.entity .command-panel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 2 1 2em;
+    padding: 1em 0.5em 1em 0.5em;
+    background-color: rgb(222, 184, 135);
+}
+
+
+    .show-room.entity .command-panel .tile {
+        margin: 0 2px 0 0;
+        padding: 4px 4px 4px 4px;
+        background-color: #3b444b; /*arsenic*/
+        color: rgb(249,246,244); /* orange red peach spring wood */
+    }
+
+.command-panel .banner {
+    margin-right: auto;
+}
+
+
+.show-room.entity .command-panel .tile [class^="icon-"] {
+    font-size: 6vh;
+}
+
+
+.show-room.entity .command-panel a.tile:hover {
+    color: rgb(226,69,16); /* realgar */
+    cursor: pointer;
+}
+
+
+.show-room.entity .list {
+    flex: 1 1 10em;
+    min-height: 40em;
+    background-color: rgb(240, 234, 214); /* eggshell */
+}
+
+
+.show-room.entity .detail fieldset {
+    flex: 2 1 2em;
+    min-height: 40em;
+}
+
+.show-room.entity .detail .feedback {
+    flex: 2 1 2em;
+    background-color: rgb(195,94,77);
+    min-height: 2em;
+}
+
+/* a little usability fix applied via class, and a toolbox class
+for hiding the text but leaving it accessible */
+.iconlink {
+    display: inline-block; /* Fix for clickability issue in WebKit */
+    margin-right: 1.2%;
+}
+
+/*
+“Substring Matching Attribute Selectors”.
+These new selectors are as follows:
+[att^=val] – the “begins with” selector
+[att$=val] – the “ends with” selector
+[att*=val] – the “contains” selector
+
+    http://www.css3.info/preview/attribute-selectors/
+*/
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'tower-pattern' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-schoolbus:before {
+    content: "\e925";
+}
+
+.icon-accident:before {
+    content: "\e91e";
+}
+
+.icon-extra-muros:before {
+    content: "\e924";
+}
+
+.icon-sexual-assault:before {
+    content: "\e922";
+}
+
+.icon-burn-out:before {
+    content: "\e923";
+}
+
+.icon-helmet-gear:before {
+    content: "\e921";
+}
+
+.icon-shock:before {
+    content: "\e91f";
+}
+
+.icon-radicalisation:before {
+    content: "\e920";
+}
+
+.icon-accident-staircase:before {
+    content: "\e91d";
+}
+
+.icon-gas-mask:before {
+    content: "\e91b";
+}
+
+.icon-mental-health:before {
+    content: "\e91c";
+}
+
+.icon-hostage:before {
+    content: "\e919";
+}
+
+.icon-terrorist1:before {
+    content: "\e91a";
+}
+
+.icon-battle:before {
+    content: "\e918";
+}
+
+.icon-suspicious-object:before {
+    content: "\e913";
+}
+
+.icon-terrorism:before {
+    content: "\e916";
+}
+
+.icon-inside:before {
+    content: "\e914";
+}
+
+.icon-outside:before {
+    content: "\e915";
+}
+
+.icon-settings:before {
+    content: "\e917";
+}
+
+.icon-communication-lines:before {
+    content: "\e911";
+}
+
+.icon-communication-dots:before {
+    content: "\e912";
+}
+
+.icon-group2:before {
+    content: "\e910";
+}
+
+.icon-calendar:before {
+    content: "\e90b";
+}
+
+.icon-meeting-3:before {
+    content: "\e90c";
+}
+
+.icon-presentation:before {
+    content: "\e90d";
+}
+
+.icon-communication-press:before {
+    content: "\e90e";
+}
+
+.icon-meeting-2:before {
+    content: "\e90f";
+}
+
+.icon-shake-hands:before {
+    content: "\e909";
+}
+
+.icon-lets-talk:before {
+    content: "\e90a";
+}
+
+.icon-teasing-boy:before {
+    content: "\e908";
+}
+
+.icon-rope-thick:before {
+    content: "\e906";
+}
+
+.icon-rope:before {
+    content: "\e907";
+}
+
+.icon-fraud:before {
+    content: "\e901";
+}
+
+.icon-evacuation-dark:before {
+    content: "\e903";
+}
+
+.icon-evacuation:before {
+    content: "\e904";
+}
+
+.icon-check:before {
+    content: "\e900";
+}
+
+.icon-thief:before {
+    content: "\e902";
+}
+
+.icon-skull:before {
+    content: "\e606";
+}
+
+.icon-user3:before {
+    content: "\e607";
+}
+
+.icon-medicine:before {
+    content: "\e608";
+}
+
+.icon-lightning:before {
+    content: "\e609";
+}
+
+.icon-droplet2:before {
+    content: "\e60a";
+}
+
+.icon-tag-stroke:before {
+    content: "\e60b";
+}
+
+.icon-tag-fill:before {
+    content: "\e60c";
+}
+
+.icon-chat:before {
+    content: "\e60d";
+}
+
+.icon-tag:before {
+    content: "\e60e";
+}
+
+.icon-tag2:before {
+    content: "\e60f";
+}
+
+.icon-warning:before {
+    content: "\e610";
+}
+
+.icon-bomb:before {
+    content: "\e611";
+}
+
+.icon-injection:before {
+    content: "\e612";
+}
+
+.icon-chat2:before {
+    content: "\e613";
+}
+
+.icon-truck2:before {
+    content: "\e614";
+}
+
+.icon-bus:before {
+    content: "\e615";
+}
+
+.icon-local_taxi:before {
+    content: "\e616";
+}
+
+.icon-paperplane:before {
+    content: "\e617";
+}
+
+.icon-send:before {
+    content: "\e618";
+}
+
+.icon-ruler:before {
+    content: "\e619";
+}
+
+.icon-enter:before {
+    content: "\e61a";
+}
+
+.icon-exit:before {
+    content: "\e61b";
+}
+
+.icon-pencil:before {
+    content: "\e61c";
+}
+
+.icon-image:before {
+    content: "\e61d";
+}
+
+.icon-images:before {
+    content: "\e61e";
+}
+
+.icon-book:before {
+    content: "\e61f";
+}
+
+.icon-books:before {
+    content: "\e620";
+}
+
+.icon-file:before {
+    content: "\e621";
+}
+
+.icon-copy:before {
+    content: "\e622";
+}
+
+.icon-stack:before {
+    content: "\e623";
+}
+
+.icon-folder:before {
+    content: "\e624";
+}
+
+.icon-folder-open:before {
+    content: "\e625";
+}
+
+.icon-notebook:before {
+    content: "\e626";
+}
+
+.icon-disk:before {
+    content: "\e627";
+}
+
+.icon-user:before {
+    content: "\e628";
+}
+
+.icon-search:before {
+    content: "\e629";
+}
+
+.icon-key:before {
+    content: "\e62a";
+}
+
+.icon-minus:before {
+    content: "\e62b";
+}
+
+.icon-plus:before {
+    content: "\e62c";
+}
+
+.icon-arrow-up:before {
+    content: "\e62d";
+}
+
+.icon-arrow-right:before {
+    content: "\e62e";
+}
+
+.icon-arrow-down:before {
+    content: "\e62f";
+}
+
+.icon-arrow-left:before {
+    content: "\e630";
+}
+
+.icon-bold:before {
+    content: "\e631";
+}
+
+.icon-underline:before {
+    content: "\e632";
+}
+
+.icon-italic:before {
+    content: "\e633";
+}
+
+.icon-paragraph-left:before {
+    content: "\e634";
+}
+
+.icon-paragraph-center:before {
+    content: "\e635";
+}
+
+.icon-paragraph-right:before {
+    content: "\e636";
+}
+
+.icon-list:before {
+    content: "\e637";
+}
+
+.icon-numbered-list:before {
+    content: "\e638";
+}
+
+.icon-menu:before {
+    content: "\e639";
+}
+
+.icon-menu2:before {
+    content: "\e63a";
+}
+
+.icon-print:before {
+    content: "\e63b";
+}
+
+.icon-remove:before {
+    content: "\e63c";
+}
+
+.icon-link:before {
+    content: "\e63d";
+}
+
+.icon-scissors:before {
+    content: "\e63e";
+}
+
+.icon-close:before {
+    content: "\e63f";
+}
+
+.icon-pencil2:before {
+    content: "\e640";
+}
+
+.icon-undo:before {
+    content: "\e641";
+}
+
+.icon-redo:before {
+    content: "\e642";
+}
+
+.icon-file-xml:before {
+    content: "\e643";
+}
+
+.icon-file-css:before {
+    content: "\e644";
+}
+
+.icon-html5:before {
+    content: "\e645";
+}
+
+.icon-css3:before {
+    content: "\e646";
+}
+
+.icon-mail:before {
+    content: "\e647";
+}
+
+.icon-indent-increase:before {
+    content: "\e648";
+}
+
+.icon-indent-decrease:before {
+    content: "\e649";
+}
+
+.icon-table:before {
+    content: "\e64a";
+}
+
+.icon-paste:before {
+    content: "\e64b";
+}
+
+.icon-spoon-knife:before {
+    content: "\e64c";
+}
+
+.icon-opt:before {
+    content: "\e64d";
+}
+
+.icon-compass:before {
+    content: "\e64e";
+}
+
+.icon-wrench:before {
+    content: "\e64f";
+}
+
+.icon-cogs:before {
+    content: "\e650";
+}
+
+.icon-truck:before {
+    content: "\e651";
+}
+
+.icon-phone:before {
+    content: "\e652";
+}
+
+.icon-bell:before {
+    content: "\e653";
+}
+
+.icon-aid-kit:before {
+    content: "\e654";
+}
+
+.icon-fire:before {
+    content: "\e655";
+}
+
+.icon-warning2:before {
+    content: "\e656";
+}
+
+.icon-file-text2:before {
+    content: "\e926";
+}
+
+.icon-drawer:before {
+    content: "\e95c";
+}
+
+.icon-user2:before {
+    content: "\e600";
+}
+
+.icon-group:before {
+    content: "\e601";
+}
+
+.icon-user-md:before {
+    content: "\e602";
+}
+
+.icon-ambulance:before {
+    content: "\e603";
+}
+
+.icon-h-square:before {
+    content: "\e604";
+}
+
+.icon-plus-square:before {
+    content: "\e605";
+}
+
+.icon-home:before {
+    content: "\e905";
+}
+
+.icon-eye-blocked:before {
+    content: "\e9d1";
+}

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using VosAdmin.Models.VosAdmin;
 
 namespace VosAdmin
 {
@@ -22,6 +24,12 @@ namespace VosAdmin
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+   //         services.AddSingleton<PostcodeApp.Dal.IPostcode>(p => new PostcodeApp.Dal.PostcodeXml(new PostcodeApp.Bll.Postcode()));
+   //         services.AddTransient(p => new Controllers.LogController(new PostcodeApp.Dal.PostcodeXml()));
+            services.AddDbContext<User7Context>(options =>
+                options.UseMySQL(Configuration.GetConnectionString("VosAdminRemote")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +49,9 @@ namespace VosAdmin
 
             app.UseMvc(routes =>
             {
+        //        routes.MapRoute("api", "Log/List",
+          //          defaults: new { controller = "Log", action = "List" });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<nav class="control-panel">
+    <a href="/Home/Index" class="tile">
+        <span class="icon-menu2"></span>
+        <span class="screen-reader-text">Home</span>
+    </a>
+    <h1 class="banner">VOS Logboek</h1>
+</nav>
+<form class="show-room entity" action="/Log/Index" method="post">
+    <div class="detail">
+        <div class="command-panel">
+            <h2 class="banner">Logboek</h2>
+            <a href="/Log/InsertingOne" class="tile">
+                <span class="icon-plus"></span>
+                <span class="screen-reader-text">InsertingOne</span>
+            </a>
+        </div>
+        <fieldset></fieldset>
+        <div class="feedback">
+        </div>
+    </div>
+    <aside class="list">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Gebruikersnaam
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Rol
+                    </th>
+                    <th>
+                        Procedurecode
+                    </th>
+                    <th>
+                        Procedure titel
+                    </th>
+                    <th>
+                        Stap
+                    </th>
+                    <th>
+                        Telefoonnummer
+                    </th>
+                    <th>
+                        SMS nummer
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @item.UserName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.Role
+                    </td>
+                    <td>
+                        @item.ProcedureCode
+                    </td>
+                    <td>
+                        @item.ProcedureTitle
+                    </td>
+                    <td>
+                        @item.StepTitle
+                    </td>
+                    <td>
+                        @item.ActionCode
+                    </td>
+                    <td>
+                        @item.CallNumber
+                    </td>
+                    <td>
+                        @item.SendNumber
+                    </td>
+
+                    <td>
+                        <a href="/Log/ReadingOne/@item.Id" >Details</a> |
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </aside>
+</form>

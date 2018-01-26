@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<nav class="control-panel">
+    <a href="/Home/Index" class="tile">
+        <span class="icon-menu2"></span>
+        <span class="screen-reader-text">Home</span>
+    </a>
+    <h1 class="banner">VOS Logboek</h1>
+</nav>
+<div class="show-room entity">
+    <div class="detail">
+        <div class="command-panel">
+            <h2 class="banner">Logboek</h2>
+            <nav>
+                <a href="/Log/UpdatingOne/@Model.Id" class="tile">
+                    <span class="icon-pencil"></span>
+                    <span class="screen-reader-text">Updating One</span>
+                </a>
+                <a href="/Log/InsertingOne" class="tile">
+                    <span class="icon-plus"></span>
+                    <span class="screen-reader-text">Inserting One</span>
+                </a>
+                <a href="/Log/DeleteOne/@Model.Id" class="tile">
+                    <span class="icon-remove"></span>
+                    <span class="screen-reader-text">Delete One</span>
+                </a>
+                <a href="/Log/Cancel" class="tile">
+                    <span class="icon-close"></span>
+                    <span class="screen-reader-text">Annuleren</span>
+                </a>
+            </nav>
+        </div>
+        <fieldset>
+            <div>
+                <label for="Log-UserName">Gebruikersnaam</label>
+                <input id="Log-UserName" name="Log-UserName" type="text" value="@Model.UserName" readonly />
+            </div>
+            <div>
+                <label for="Log-Email">E-mail</label>
+                <input id="Log-Email" name="Log-Email" type="email" value="@Model.Email" readonly />
+            </div>
+            <div>
+                <label for="Log-Role">Gebruikersrol</label>
+                <input id="Log-Role" name="Log-Role" type="text" value="@Model.Role" readonly />
+            </div>
+            <div>
+                <label for="Log-ProcedureCode">Procedure code</label>
+                <input id="Log-ProcedureCode" name="Log-ProcedureCode" type="text" value="@Model.ProcedureCode" readonly />
+            </div>
+            <div>
+                <label for="Log-ProcedureTitle">Procedure titel</label>
+                <input id="Log-ProcedureTitle" name="Log-ProcedureTitle" type="text" value="@Model.ProcedureTitle" readonly />
+            </div>
+            <div>
+                <label for="Log-StepTitle">Stap</label>
+                <input id="Log-StepTitle" name="Log-StepTitle" type="text" value="@Model.StepTitle" readonly />
+            </div>
+            <div>
+                <label for="Log-ActionCode">Actie</label>
+                <input id="Log-ActionCode" name="Log-ActionCode" type="text" value="@Model.ActionCode" readonly />
+            </div>
+            <div>
+                <label for="Log-CallNumber">Telefoonnummer gebeld</label>
+                <input id="Log-CallNumber" name="Log-CallNumber" type="text" value="@Model.CallNumber" readonly />
+            </div>
+            <div>
+                <label for="Log-SendNumber">Telefoonnummer gesms'd</label>
+                <input id="Log-SendNumber" name="Log-SendNumber" type="text" value="@Model.SendNumber" readonly />
+            </div>
+        </fieldset>
+        <div class="feedback"></div>
+    </div>
+    <aside class="list">
+        <table></table>
+    </aside>
+</div>

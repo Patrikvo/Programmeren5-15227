@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<nav class="control-panel">
+    <a href="/Home/Index" class="tile">
+        <span class="icon-menu2"></span>
+        <span class="screen-reader-text">Home</span>
+    </a>
+    <h1 class="banner">VOS Logboek</h1>
+</nav>
+<form class="show-room entity" action="/Log/UpdateOne" method="post">
+    <div class="detail">
+        <div class="command-panel">
+            <h2 class="banner">Logboek</h2>
+            <nav>
+                <button type="submit" class="tile">
+                    <span class="icon-pencil"></span>
+                    <span class="screen-reader-text">Updating One</span>
+                </button>
+                <a href="/Log/Cancel" class="tile">
+                    <span class="icon-close"></span>
+                    <span class="screen-reader-text">Annuleren</span>
+                </a>
+            </nav>
+        </div>
+        <fieldset>
+            <input type="hidden" id="Log-Id" name="Log-Id" value="@Model.Id" />
+            
+            <div>
+                <label for="Log-UserName">Gebruikersnaam</label>
+                <input id="Log-UserName" name="Log-UserName" type="text" value="@Model.UserName" required />
+            </div>
+            <div>
+                <label for="Log-Email">E-mail</label>
+                <input id="Log-Email" name="Log-Email" type="email" value="@Model.Email" required/>
+            </div>
+            <div>
+                <label for="Log-Role">Gebruikersrol</label>
+                <input id="Log-Role" name="Log-Role" type="text" value="@Model.Role" required/>
+            </div>
+            <div>
+                <label for="Log-ProcedureCode">Procedure code</label>
+                <input id="Log-ProcedureCode" name="Log-ProcedureCode" type="text" value="@Model.ProcedureCode" required/>
+            </div>
+            <div>
+                <label for="Log-ProcedureTitle">Procedure titel</label>
+                <input id="Log-ProcedureTitle" name="Log-ProcedureTitle" type="text" value="@Model.ProcedureTitle" required/>
+            </div>
+            <div>
+                <label for="Log-StepTitle">Stap</label>
+                <input id="Log-StepTitle" name="Log-StepTitle" type="text" value="@Model.StepTitle" required/>
+            </div>
+            <div>
+                <label for="Log-ActionCode">Actie</label>
+                <input id="Log-ActionCode" name="Log-ActionCode" type="text" value="@Model.ActionCode" required/>
+            </div>
+            <div>
+                <label for="Log-CallNumber">Telefoonnummer gebeld</label>
+                <input id="Log-CallNumber" name="Log-CallNumber" type="text" value="@Model.CallNumber" required/>
+            </div>
+            <div>
+                <label for="Log-SendNumber">Telefoonnummer gesms'd</label>
+                <input id="Log-SendNumber" name="Log-SendNumber" type="text" value="@Model.SendNumber" required/>
+            </div>
+        </fieldset>
+        <div class="feedback"></div>
+    </div>
+    <aside class="list">
+        <table></table>
+    </aside>
+</form>

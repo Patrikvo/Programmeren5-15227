@@ -1,0 +1,14 @@
+﻿.tower {
+    font-family: Verdana, sans-serif;
+    width: 100%;
+    background-color: rgba(249, 246, 244, 0.9);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+
+html {
+    width: 100%;
+}

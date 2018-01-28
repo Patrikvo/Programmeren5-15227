@@ -95,7 +95,7 @@ function updateSigninStatus(isSignedIn) {
         userLastName = "Gast";
         userID = -1;
 
-
+        setUserInfo(userFirstName, userLastName, userID);
 		
     }
 }

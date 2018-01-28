@@ -28,6 +28,8 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        document.addEventListener("offline", onOffline, false);
+        document.addEventListener("online", onOnline, false);
     },
 
     // Update DOM on a Received Event
@@ -93,8 +95,109 @@ var smsSend = function (number, message) {
 app.initialize();
 
 window.onload = function(){
-    location.href= "#home-index";
+    
+   // checkConnection();
     document.body.addEventListener('click', dispatcher, false);
     vos.setModel();
-    
+    //location.href = "#home-index";
+    window.setTimeout(function () { controller['home']['index'](); }, 500);
+    //controller['home']['index']();
+    transferLogs();
+}
+
+
+
+
+// connectionStatus
+var onOffline = function () {
+    checkConnection();
+}
+
+var onOnline = function () {
+    checkConnection();
+    transferLogs();
+}
+
+var checkConnection = function () {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN] = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI] = 'WiFi connection';
+    states[Connection.CELL_2G] = 'Cell 2G connection';
+    states[Connection.CELL_3G] = 'Cell 3G connection';
+    states[Connection.CELL_4G] = 'Cell 4G connection';
+    states[Connection.CELL] = 'Cell generic connection';
+    states[Connection.NONE] = 'No network connection';
+
+    document.getElementById("connectionStatus").innerHTML = states[networkState];
+}
+
+var hasWifiConnection = function () { return navigator.connection.type == Connection.WIFI;}
+
+var transferLogs = function(){
+    var logCache = JSON.parse(localStorage.getItem('logCache'));
+
+    if (logCache == null) { return;}
+
+    if (logCache.length > 0 && hasWifiConnection() == true) {
+        inTransitLog = logCache.pop();
+        transferLog(inTransitLog);
+    }
+    else {
+        return;
+    }
+
+    localStorage.setItem('logCache', JSON.stringify(logCache));
+
+
+}
+
+var inTransitLog;
+
+var transferLog = function(logEntry){
+    var url = "http://programmeren5-15227-p-van-ostaeyen-patrikvanostaeyen.c9users.io:8080/api/Insert";
+
+    // Sending and receiving data in JSON format using POST method
+    //
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                inTransitLog = null;
+                transferLogs();
+                console.log(200);
+            }
+            else if (xhr.status === 404) {
+                document.getElementById("connectionStatus").innerHTML = "transfer failed";
+                transferFailedconsole.log(404)
+
+            }
+            else {
+                console.log(xhr.status)
+            }
+        }
+        
+    };
+    var data = JSON.stringify(logEntry);
+    xhr.send(data);
+
+}
+
+
+var transferFailed = function(){
+    var logCache = JSON.parse(localStorage.getItem('logCache'));
+
+    if (logCache == null) {
+        logCache = new Array();
+    }
+
+    logCache.push(inTransitLog);
+
+    localStorage.setItem('logCache', JSON.stringify(logCache));
+    inTransitLog = null;
 }

@@ -284,6 +284,18 @@
             </header>
             <div class="show-room view">
             </div>
+            <div class="frameControl">
+                <button class="tile" name="uc" value="page/prevFrame">
+                    PF
+                    <span class="icon-arrow-left"></span>
+                    <span class="screen-reader-text">Vorige pagina</span>
+                </button>
+
+                <button class="tile" name="uc" value="page/nextFrame">NF
+                    <span class="icon-arrow-right"></span>
+                    <span class="screen-reader-text">Vorige pagina</span>
+                </button>
+            </div>
         </div>
 
 
@@ -291,13 +303,16 @@
     </div>
 
     <div id='feedback'></div>
+    <div id="connectionStatus">
 
+    </div>
     <div class="app">
         <h1>Apache Cordova</h1>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
+        
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>

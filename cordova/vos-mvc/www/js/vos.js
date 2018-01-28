@@ -8,7 +8,7 @@ var ProcedureFileSuffix = '.json';
 var PositionFile = 'data/position.json';
 var organisationListFile = 'data/organisationList.json';
 var modelStorageName = 'model';
-
+var IsOathLogin = false;
 
 
 
@@ -67,6 +67,17 @@ var vos = {
         }
     },
 
+    'updateProcedures': function () {
+        var payload = {};
+        // procedures depend on Role (in uppercase)
+        var fileName = ProcedureFilePrefix + vos.model.identity.role.toUpperCase() + ProcedureFileSuffix;
+        $http(fileName).get(payload).then(function (data) {
+            vos.model.procedureList = JSON.parse(data);
+        });
+    },
+
+
+
     'navigateTo': function (view, title) {
         location.href = '#' + view;
         var h1 = document.querySelector('#' + view + ' h1');
@@ -100,21 +111,25 @@ var vos = {
         var onSuccess = function (pos) {
             vos.model.position.latitude = pos.coords.latitude.toFixed(4);
             vos.model.position.longitude = pos.coords.longitude.toFixed(4);
-            //vos.setMyLocation();
-            //render.identity('#identity');
+            vos.setMyLocation();
+            render.identity('#home .identity');
             //view['home']['index']();
         };
         var onError = function (error) {
             // stel in op hoofdzetel
             vos.model.position.latitude = 51.1771;
             vos.model.position.longitude = 4.3533;
-            //vos.setMyLocation();
-            //render.identity('#identity');
+            vos.setMyLocation();
+            render.identity('#home .identity');
             //view['home']['index']();
         };
         var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
     },
     'setMyLocation': function () {
+        if (vos.model.loaded == false)
+        {
+            return;
+        }
         vos.model.organisationList.forEach(function (item) {
             item.distanceFromMyLocation = getDistanceFromLatLonInKm(
                 vos.model.position.latitude, vos.model.position.longitude,
@@ -135,19 +150,76 @@ var vos = {
 
 
     login: function () {
-    //    var userName = document.getElementById('userName').value;
-     //   var password = document.getElementById('password').value;
+        var userName = document.getElementById('userName').value;
+        var password = document.getElementById('password').value;
 
-        signIn(null);
+        if (userName) {
+            $http('data/personList.json')
+                .get()
+                .then(function (responseText) {
+                    var person = JSON.parse(responseText);
+                    var userIdentity = person.list.find(function (item) {
+                        return item.userName === userName && item.password === password
+                    });
+                    if (userIdentity) {
+                        userIdentity.loggedIn = true;
+                        // identity = JSON.parse(localStorage.getItem('identity'));
+                        vos.model.identity = userIdentity;
+                        IsOathLogin = false;
+                        var payload = {};
+                        // procedures depend on Role (in uppercase)
+                        var fileName = 'data/procedure' + vos.model.identity.role.toUpperCase() + '.json';
+                        $http(fileName).get(payload)
+                            .then(function (data) {
+                                vos.model.procedureList = JSON.parse(data);
+                                localStorage.setItem('model', JSON.stringify(vos.model));
+                                controller['home']['index']();
+                            });
+                    } else {
+                        alert('ongeldige gebruikersnaam of paswoord');
+                    }
+                })
+                .catch(function (message) {
+                    alert(message);
+                })
+        } else {
+            signIn(null);
+            IsOathLogin = true;
+            vos.model.identity.role = "LDO";
 
-        
+            vos.updateProcedures();
+        }
+
     },
 
     logout: function () {
-        signOut(null);
-        vos.model.identity.firstName = "Gast";
-        vos.model.identity.lastName = "";
-        vos.model.identity.loggedIn = false;
+        if (IsOathLogin) {
+            signOut(null);
+            vos.model.identity.firstName = "Gast";
+            vos.model.identity.lastName = "";
+            vos.model.identity.loggedIn = false;
+        }
+        else {
+            $http('data/identity.json')
+                .get()
+                .then(function (responseText) {
+                    vos.model.identity = JSON.parse(responseText);
+                    var payload = {};
+                    // procedures depend on Role (in uppercase)
+                    var fileName = 'data/procedure' + vos.model.identity.role.toUpperCase() + '.json';
+                    return $http(fileName).get(payload);
+                })
+                .then(function (responseText) {
+                    vos.model.procedureList = JSON.parse(responseText);
+                    vos.model.loaded = true;
+                    localStorage.setItem('model', JSON.stringify(vos.model));
+                    controller['home']['index']();
+                })
+                .catch(function (message) {
+                    alert(message);
+                });
+        }
+        
     }
 
 
@@ -177,8 +249,8 @@ var render = {
             elem.appendChild(makeTextElement('aangemeld als gast'));
             var buttonElement = makeButton('Aanmelden');
             buttonElement.setAttribute('name', 'uc');
-            //buttonElement.setAttribute('value', 'home/loggingIn');
-            buttonElement.setAttribute('value', 'home/login');
+            buttonElement.setAttribute('value', 'home/loggingIn');
+            //buttonElement.setAttribute('value', 'home/login');
             
             elem.appendChild(buttonElement);
         }
@@ -190,49 +262,66 @@ var render = {
                 return item.code === procedureCode;
             });
             elem = render.identity('#view-procedure .show-room');
+
+            if (frame >= procedure.step.length) { frame = procedure.step.length - 1; }
+            if (frame < 0) { frame = 0; }
+
             var step = document.createElement('DIV');
             step.setAttribute('class', 'step');
-            step.appendChild(makeHtmlTextElement(procedure.heading, 'h2'));
+            step.appendChild(makeHtmlTextElement(procedure.heading + ' - stap ' + (frame+1) + ' van ' + procedure.step.length, 'h2'));
+
+
             var listElement = document.createElement('OL');
             listElement.setAttribute('class', 'index');
+
+
             procedure.step.forEach(function (item, index) {
-                var step = makeHtmlTextElement(item.title, 'li');
-                if ("action" in item) {
-                    var commandPanelElem = makeCommandPanel();
-                    item.action.forEach(function (item) {
-                        commandPanelElem.appendChild(render.procedure[item.code](item, procedure.title));
-                    });
-                    step.appendChild(commandPanelElem);
+                if (index == frame) {
+                    var step = makeHtmlTextElement(item.title, 'li');
+                    if ("action" in item) {
+                        var commandPanelElem = makeCommandPanel();
+                        item.action.forEach(function (actionItem) {
+                            commandPanelElem.appendChild(render.procedure[actionItem.code](actionItem, procedure.title, procedureCode, item.title));
+                        });
+                        step.appendChild(commandPanelElem);
+                    }
+                    if ("list" in item) {
+                        step.appendChild(render.procedure['LIST'](item.list));
+                    }
+                    listElement.appendChild(step);
                 }
-                if ("list" in item) {
-                    step.appendChild(render.procedure['LIST'](item.list));
-                }
-                listElement.appendChild(step);
             });
+
+
             step.appendChild(listElement);
+
             elem.appendChild(step);
         },
-        'TEL': function (item, message) {
+        'TEL': function (item, message, procedureCode, step) {
             // Het telefoonnummer van directie, secretariaat, ... is afhankelijk van de plaats
             var phoneNumber = getPhoneNumber(item.phoneNumber);
             if (vos.model.identity.loggedIn) {
                 var buttonElement = makeTileButton('Tel', 'icon-phone');
                 buttonElement.addEventListener('click', function () {
+                    logAction(message, procedureCode, step, phoneNumber, 'TEL');
                     phoneCall(phoneNumber);
                 });
+                buttonElement.appendChild(document.createTextNode(getPhoneNumberOwner(item.phoneNumber)));
                 return buttonElement;
             } else {
                 return makeTextElement(item.code + ' ' + phoneNumber, 'P');
             }
         },
-        'SMS': function (item, message) {
+        'SMS': function (item, message, procedureCode, step) {
             // Het telefoonnummer van directie, secretariaat, ... is afhankelijk van de plaats
             var phoneNumber = getPhoneNumber(item.phoneNumber);
             if (vos.model.identity.loggedIn) {
                 var buttonElement = makeTileButton('Tel', 'icon-send');
                 buttonElement.addEventListener('click', function () {
+                    logAction(message, procedureCode, step, phoneNumber, 'SMS');
                     vos.smsPrepare(phoneNumber, message);
                 });
+                buttonElement.appendChild(document.createTextNode(getPhoneNumberOwner(item.phoneNumber)));
                 return buttonElement;
             } else {
                 return makeTextElement(item.code + ' ' + phoneNumber, 'P');
@@ -256,6 +345,7 @@ var render = {
 * @param {object} e verwijzing naar het dom element dat het event heeft afgevuurd.
 */
 var dispatcher = function (e) {
+    transferLogs();
    var target = e.target;
    var steps = 0;
    while (target.getAttribute('name') !== 'uc' && steps < 5 && target.tagName !== 'BODY') {
@@ -316,125 +406,193 @@ var view = {
 };
 
 
-
+var lastEntity;
+var lastAction;
+var frame = 0;
 
 
 var controller = {
     'home': {
         'index': function () {
+            lastEntity = 'home';
+            lastAction = 'index';
+            frame = 0;
             vos.getPosition();
-            vos.setMyLocation();
+           // vos.setMyLocation();
             render.identity('#home .identity');
             view['home']['index']();
         },
         'gas-leak': function () {
+            lastEntity = 'home';
+            lastAction = 'gas-leak';
             render.procedure.make('GL');
             view['procedure']('gaslek');
         },
         'amok': function () {
+            lastEntity = 'home';
+            lastAction = 'amok';
             render.procedure.make('AMOK');
             view['procedure']('AMOK - Geweld');
         },
-        'loggingIn': view['home']['loggingIn'],
+        'loggingIn': function () {
+            lastEntity = 'home';
+            lastAction = 'loggingIn';
+            view['home']['loggingIn']();
+        },
         'login': function () {
+            lastEntity = 'home';
+            lastAction = 'login';
             vos.login();
             vos.getPosition();
-            vos.setMyLocation();
-            render.identity('#home .identity');
+         //   vos.setMyLocation();
+    //        render.identity('#home .identity');
             view['home']['index']();
         },
         'logout': function () {
+            lastEntity = 'home';
+            lastAction = 'logout';
             vos.logout();
             vos.getPosition();
-            vos.setMyLocation();
+        //    vos.setMyLocation();
             render.identity('#home .identity');
             view['home']['index']();
         },
-        'settings': vos.settings
+        'settings': function () {
+            lastEntity = 'home';
+            lastAction = 'settings';
+            vos.settings;
+        }
     },
+
     'call': {
         'hot-line': function () {
+            lastEntity = 'call';
+            lastAction = 'hot-line';
             phoneCall('+32486788723');
             //window.open('tel:+32486788723');
         }
     },
+
     'psycho-social-risk': {
         'index': function () {
+            lastEntity = 'psycho-social-risk';
+            lastAction = 'index';
             vos.getPosition();
-            vos.setMyLocation();
+        //    vos.setMyLocation();
             render.identity('#psycho-social-risk .identity');
             view['psycho-social-risk']['index']();
         }
     },
     'terror': {
         'index': function () {
+            lastEntity = 'terror';
+            lastAction = 'index';
             vos.getPosition();
-            vos.setMyLocation();
+      //      vos.setMyLocation();
             render.identity('#terror .identity');
             view['terror']['index']();
         },
         'bomb-alarm': function () {
+            lastEntity = 'terror';
+            lastAction = 'bomb-alarm';
             render.procedure.make('BA');
             view['procedure']('bomalarm');
         },
         'suspicious-object': function () {
+            lastEntity = 'terror';
+            lastAction = 'suspicious-object';
             render.procedure.make('VV');
             view['procedure']('verdacht voorwerp');
         },
         'terrorist-attack': function () {
+            lastEntity = 'terror';
+            lastAction = 'terrorist-attack';
             render.procedure.make('TA');
             view['procedure']('terroristische aanslag');
         },
         'amok': function () {
+            lastEntity = 'terror';
+            lastAction = 'amok';
             render.procedure.make('AMOK');
             view['procedure']('AMOK & blind geweld');
         }
     }
     ,
+
     'accident': {
         'index': function () {
+            lastEntity = 'accident';
+            lastAction = 'index';
             vos.getPosition();
-            vos.setMyLocation();
+        //    vos.setMyLocation();
             render.identity('#accident .identity');
             view['accident']['index']();
         },
         'extra-muros': function () {
+            lastEntity = 'accident';
+            lastAction = 'extra-muros';
             render.procedure.make('EM');
             view['procedure']('extra-muros');
         },
         'serious-work-accident': function () {
+            lastEntity = 'accident';
+            lastAction = 'serious-work-accident';
             render.procedure.make('SWA');
             view['procedure']('ernstig arbeidsongeval');
         },
         'work-accident': function () {
+            lastEntity = 'accident';
+            lastAction = 'work-accident';
             render.procedure.make('WA');
             view['procedure']('arbeidsongeval');
         },
         'to-from-school': function () {
+            lastEntity = 'accident';
+            lastAction = 'to-from-school';
             render.procedure.make('TFS');
             view['procedure']('van en naar school');
         }
     },
+
     'fire': {
         'index': function () {
+            lastEntity = 'fire';
+            lastAction = 'index';
             vos.getPosition();
-            vos.setMyLocation();
+       //     vos.setMyLocation();
             render.identity('#fire .identity');
             view['fire']['index']('brand');
         },
         'detection': function () {
+            lastEntity = 'fire';
+            lastAction = 'detection';
             render.procedure.make('BM');
             view['procedure']('brandmelding');
         },
         'evacuation': function () {
+            lastEntity = 'fire';
+            lastAction = 'evacuation';
             render.procedure.make('BREV');
             view['procedure']('brandevacuatie');
         }
     },
+
     'page': {
         'previous': function () {
+            lastEntity = 'page';
+            lastAction = 'previous';
+            frame = 0;
             window.history.back();
+        },
+        'nextFrame': function() {
+            frame = frame + 1;
+            controller[lastEntity][lastAction]();
+        },
+        'prevFrame': function () {
+            frame = frame - 1;
+            controller[lastEntity][lastAction]();
         }
+        
     }
 };
 
@@ -449,4 +607,68 @@ setUserInfo = function (fname, lname, id) {
     controller['home']['index']();
 
     //window.location.assign("index.html#home-index");
+}
+
+
+
+var logAction = function (ProcedureTitle, ProcedureCode, StepTitle, CallNumber, ActionCode){
+    /*
+    naam van de gebruiker;
+het email adres van de gebruiker;
+rol van de gebruiker;
+
+de titel en code van de procedure;
+de titel van de stap in de procedure;
+het telefoonnummer waarnaar gebeld of gesms't wordt;
+
+het telefoonnummer waarvan gebeld of gesms't wordt;
+    */
+
+
+ //   vos.model.identity.mobile
+
+    var UserName = vos.model.identity.firstName + ' ' + vos.model.identity.lastName;
+    var Email = vos.model.identity.email;
+    var Role = vos.model.identity.role;
+   //  ProcedureTitle
+   //  ProcedureCode 
+   //  StepTitle
+  //   CallNumber 
+    var sendNumber = vos.model.identity.mobile;
+    // ActionCode
+
+    var logEntry = {
+        "UserName": UserName,
+        "Email": Email,
+        "Role": Role,
+        "ProcedureCode": ProcedureCode,
+        "ProcedureTitle": ProcedureTitle,
+        "StepTitle": StepTitle,
+        "ActionCode": ActionCode,
+        "CallNumber": CallNumber,
+        "SendNumber": sendNumber };
+
+/*
+    body:
+    {
+        "UserName": "uname",
+            "Email": "email",
+                "Role": "role",
+                    "ProcedureCode": "pcode",
+                        "ProcedureTitle": "ptitle",
+                            "StepTitle": "stitle",
+                                "ActionCode": "acode",
+                                    "CallNumber": "callnum",
+                                        "SendNumber": "sendnum"
+    }*/
+
+    var logCache = JSON.parse(localStorage.getItem('logCache'));
+
+    if (logCache == null) {
+        logCache = new Array();
+    }
+
+    logCache.push(logEntry);
+
+    localStorage.setItem('logCache', JSON.stringify(logCache));
 }

@@ -64,14 +64,19 @@ var makeTileButton = function(text, icon) {
     var buttonElem = document.createElement('BUTTON');
     buttonElem.setAttribute('type', 'submit');
     buttonElem.setAttribute('class', 'tile');
+
     var iconElem = document.createElement('SPAN');
     iconElem.setAttribute('class', icon);
     buttonElem.appendChild(iconElem);
+
     var screenReaderTextElem = document.createElement('SPAN');
     screenReaderTextElem.setAttribute('class', 'screen-reader-text');
+
     var textElem = document.createTextNode(text);
     screenReaderTextElem.appendChild(textElem);
+
     buttonElem.appendChild(screenReaderTextElem);
+
     return buttonElem;
 }
 
@@ -104,6 +109,23 @@ var getPhoneNumber = function(number) {
     }
     return phoneNumber;
 }
+
+var getPhoneNumberOwner = function (number) {
+    var phoneNumberOwner = "Onbekend";
+    switch (number) {
+        case 'DV':
+            phoneNumberOwner = "Directie " + vos.model.myLocation.name;
+            break;
+        case 'secretariaat':
+            phoneNumberOwner = "Secretariaat " + vos.model.myLocation.name;
+            break;
+        case 'preventieadviseur':
+            phoneNumberOwner = "preventieadviseur " + vos.model.myLocation.name;
+            break;
+    }
+    return phoneNumberOwner;
+}
+
 
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
     var R = 6371; // Radius of the earth in km

@@ -237,6 +237,18 @@ waarden toe te kennen aan top en left */
     min-height: 2em;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+   border: 1px solid black;
+}
+
+th, td {
+    text-align: center;
+}
+
 /* a little usability fix applied via class, and a toolbox class
 for hiding the text but leaving it accessible */
 .iconlink {

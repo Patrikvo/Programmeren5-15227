@@ -261,23 +261,40 @@ var render = {
             var procedure = vos.model.procedureList.procedure.find(function (item) {
                 return item.code === procedureCode;
             });
-            elem = render.identity('#view-procedure .show-room');
+            /*
+            var elem = document.querySelector('#view-procedure .show-room');
+            elem.innerHTML = "";
+            div = document.createElement("DIV");
+            div.setAttribute("class", "identity");
+            elem.appendChild(div);
+            
+            render.identity('#view-procedure .show-room .identity');
+            */
+            render.identity('#view-procedure .show-room .identity');
+
+            var elem = document.querySelector('#view-procedure .show-room .steps');
+            elem.innerHTML = "";
+
+            
 
             if (frame >= procedure.step.length) { frame = procedure.step.length - 1; }
             if (frame < 0) { frame = 0; }
 
             var step = document.createElement('DIV');
             step.setAttribute('class', 'step');
-            step.appendChild(makeHtmlTextElement(procedure.heading + ' - stap ' + (frame+1) + ' van ' + procedure.step.length, 'h2'));
+            step.appendChild(makeHtmlTextElement(procedure.heading, 'h2'));
+            step.appendChild(makeHtmlTextElement('Stap ' + (frame + 1) + ' van ' + procedure.step.length, 'h3'));
 
 
-            var listElement = document.createElement('OL');
+            //var listElement = document.createElement('OL');
+            var listElement = document.createElement('P');
             listElement.setAttribute('class', 'index');
 
 
             procedure.step.forEach(function (item, index) {
                 if (index == frame) {
-                    var step = makeHtmlTextElement(item.title, 'li');
+                    //var step = makeHtmlTextElement(item.title, 'li');
+                    var step = makeHtmlTextElement(item.title, 'span');
                     if ("action" in item) {
                         var commandPanelElem = makeCommandPanel();
                         item.action.forEach(function (actionItem) {
@@ -614,28 +631,24 @@ setUserInfo = function (fname, lname, id) {
 var logAction = function (ProcedureTitle, ProcedureCode, StepTitle, CallNumber, ActionCode){
     /*
     naam van de gebruiker;
-het email adres van de gebruiker;
-rol van de gebruiker;
+    het email adres van de gebruiker;
+    rol van de gebruiker;
 
-de titel en code van de procedure;
-de titel van de stap in de procedure;
-het telefoonnummer waarnaar gebeld of gesms't wordt;
+    de titel en code van de procedure;
+    de titel van de stap in de procedure;
+    het telefoonnummer waarnaar gebeld of gesms't wordt;
 
-het telefoonnummer waarvan gebeld of gesms't wordt;
+    het telefoonnummer waarvan gebeld of gesms't wordt;
     */
 
 
- //   vos.model.identity.mobile
+ 
 
     var UserName = vos.model.identity.firstName + ' ' + vos.model.identity.lastName;
     var Email = vos.model.identity.email;
     var Role = vos.model.identity.role;
-   //  ProcedureTitle
-   //  ProcedureCode 
-   //  StepTitle
-  //   CallNumber 
     var sendNumber = vos.model.identity.mobile;
-    // ActionCode
+
 
     var logEntry = {
         "UserName": UserName,
@@ -647,20 +660,6 @@ het telefoonnummer waarvan gebeld of gesms't wordt;
         "ActionCode": ActionCode,
         "CallNumber": CallNumber,
         "SendNumber": sendNumber };
-
-/*
-    body:
-    {
-        "UserName": "uname",
-            "Email": "email",
-                "Role": "role",
-                    "ProcedureCode": "pcode",
-                        "ProcedureTitle": "ptitle",
-                            "StepTitle": "stitle",
-                                "ActionCode": "acode",
-                                    "CallNumber": "callnum",
-                                        "SendNumber": "sendnum"
-    }*/
 
     var logCache = JSON.parse(localStorage.getItem('logCache'));
 

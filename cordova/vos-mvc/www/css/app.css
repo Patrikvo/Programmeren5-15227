@@ -1,6 +1,7 @@
 /* Cordova settings */
 .feedback {
     display: none;
+    height: 100%;
 }
 
 .event {
@@ -219,13 +220,47 @@ body {
         height: 36%;
     }
 
+    .show-room > .identity {
+        width: 96%;
+        height: 32%;
+    }
 
-}
+    .show-room {
+        height: 80%;
+    }
+
+        .show-room .step {
+            position: relative;
+            float: left;
+        }
+
+    .command-panel .tile {
+        font-size: 4vh;
+    }
+ }
 
 @media (orientation: landscape) {
     .show-room.index > .tile {
         width: 44%;
         height: 65%;
+    }
+
+    .show-room > .identity {
+        width: 44%;
+        height: 65%;
+    }
+
+    .show-room {
+        height: 70%;
+    }
+
+        .show-room .step {
+            position: relative;
+            width: 44%;
+            float: left;
+        }
+    .command-panel .tile {
+        font-size: 5vh;
     }
 }
 
@@ -240,4 +275,84 @@ body {
     position: absolute;
     top: -9999px;
     left: -9999px;
+}
+
+
+
+
+
+.show-room .identity {
+
+    background: rgba(240, 239, 228, 0.9);
+    border-radius: 2em 0 2em 0;
+    margin-top: 0.4em;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    color: black;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+
+    /* ------------- Frame -------------- */
+    /* call buttons */
+    .command-panel .tile {
+    position: relative; /* masker is absoluut geplaatst hierop*/
+    float: left; /* tegels naast en onder elkaar */
+    overflow: hidden;
+    cursor: pointer;
+    color: #000;
+    background-color: rgba(255, 255, 0, 1);
+    text-align: center;
+    line-height: 1.5;
+ /*   font-size: 4vh;*/
+    margin-top: 2%;
+    /*width: 10%;*/
+    height: 100%;
+    min-width: 1.2em;
+    min-height: 1.2em;
+    /*font-size: 3.5vw;*/
+}
+
+
+/* standaard hover kan overschreven worden door ander schema */
+    .command-panel .tile:hover {
+        color: rgb(226, 69, 16);
+        cursor: pointer;
+    }
+
+
+/* next previous buttons */
+
+
+.floor .frameControl .tile {
+    position: relative; /* masker is absoluut geplaatst hierop*/
+    float: left; /* tegels naast en onder elkaar */
+    overflow: hidden;
+    cursor: pointer;
+    color: #000;
+    background-color: rgba(70, 120, 255, 0.9);
+    text-align: center;
+    line-height: 1.5;
+    font-size: 6vh;
+    margin-left: 7%;
+    /* 14 tegels per rij, één rij */
+    width: 40%;
+    height: 100%;
+    min-width: 1.2em;
+    min-height: 1.2em;
+    /*font-size: 3.5vw;*/
+}
+
+    /* standaard hover kan overschreven worden door ander schema */
+    .floor .frameControl .tile:hover {
+        color: rgb(226, 69, 16);
+        cursor: pointer;
+    }
+
+
+ol.index {
+    margin-left: 10%;
 }
